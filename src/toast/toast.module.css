@@ -1,0 +1,51 @@
+.toast {
+    border-radius: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+    height: fit-content;
+    max-width: 360px;
+    min-height: 48px;
+}
+
+.toast-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    width: 360px;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+        max-height: 0px;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100% {
+        max-height: 1000px;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10px);
+        opacity: 0;
+        display: none;
+    }
+}
+
+.fadeIn {
+    animation: fade-in 550ms ease-in forwards;
+}
+
+.fadeOut {
+    animation: fade-out 550ms ease-in forwards;
+}

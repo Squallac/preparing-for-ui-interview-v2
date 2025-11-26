@@ -1,0 +1,82 @@
+/* Full-page black background wrapper */
+.app {
+    height: 100vh;
+    background: #000;
+    /* area outside of container */
+    display: flex;
+    justify-content: center;
+    /* center container horizontally */
+    align-items: flex-start;
+    padding: 0 0;
+    /* a little breathing room */
+}
+
+/* Centered white container */
+.container {
+    width: 960px;
+    background: #fff;
+    min-height: 100%;
+    /* ensure white stretches on tall pages */
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    border-right: 1px solid #eee;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 5px;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.sidebar button:hover {
+    background-color: #f5f5f5;
+}
+
+.sidebar button.active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+    font-weight: 500;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+}
+
+/* Toast container (fixed to bottom, centered) */
+.toastContainer {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+}
