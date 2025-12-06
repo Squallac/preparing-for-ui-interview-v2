@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import flex from '../utilities/flex.module.css'
-import { cx } from "../utilities/utility.ts";
+import flex from '../../utilities/flex.module.css'
+import { cx } from '../../utilities/utility';
 
 type TCheckboxItem = {
     id: string;

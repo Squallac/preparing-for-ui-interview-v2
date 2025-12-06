@@ -1,12 +1,17 @@
 import "./reset.css";
 import css from "./app.module.css";
-import { ToastProvider, useToast } from "./toast/toast.react";
+import { ToastProvider, useToast } from "./done/toast/toast.react";
 
 import { useState } from "react";
 
-import { CheckboxTreeExample } from "./nested-checkboxes/checkboxes.react";
-import { AccordionExample } from "./accordion/accordion.react";
-import { TabsExample } from "./tabs/tabs.react";
+import { CheckboxTreeExample } from "./done/nested-checkboxes/checkboxes.react";
+import { AccordionExample } from "./done/accordion/accordion.react";
+import { TabsExample } from "./done/tabs/tabs.react";
+import { TooltipExample } from "./done/tooltip/tooltip.react";
+import { TableExample } from "./done/table/table.react";
+import { MarkdownExample } from "./in-progress/markdown/markdown.react";
+import { SquareGameExample } from "./done/square-game/square-game.react";
+
 
 const EXAMPLES = {
     toast: {
@@ -28,6 +33,26 @@ const EXAMPLES = {
         id: "tabs",
         name: "Tabs",
         component: TabsExample,
+    },
+    tooltip: {
+        id: "tooltip",
+        name: "Tooltip",
+        component: TooltipExample,
+    },
+    table: {
+        id: "table",
+        name: "Table",
+        component: TableExample,
+    },
+    markdown: {
+        id: "markdown",
+        name: "Markdown",
+        component: MarkdownExample,
+    },
+    squareGame: {
+        id: "squareGame",
+        name: "Square Game",
+        component: SquareGameExample,
     },
 } as const;
 

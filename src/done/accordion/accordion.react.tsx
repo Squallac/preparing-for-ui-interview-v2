@@ -1,6 +1,6 @@
 import css from './accordion.module.css';
-import flex from '../utilities/flex.module.css';
-import { cx } from '../utilities/utility';
+import flex from '../../utilities/flex.module.css';
+import { cx } from '../../utilities/utility';
 
 type TAccordionItem = {
     id: string;
@@ -9,7 +9,6 @@ type TAccordionItem = {
 };
 
 export const Accordion = ({ items }: { items: TAccordionItem[] }) => {
-    console.log(cx(css.content, flex.padding16))
     return (
         <div className={cx(css.container, flex.flexColumnGap12)}>
             {items.map((item) => (

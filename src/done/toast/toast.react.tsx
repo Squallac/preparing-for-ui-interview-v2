@@ -1,5 +1,5 @@
 import {
-    createContext, type PropsWithChildren, type RefObject,
+    createContext, type PropsWithChildren,
     useContext,
     useImperativeHandle,
     useLayoutEffect,
@@ -25,7 +25,7 @@ type TToastItem = {
 };
 
 const ToastContext = createContext<TToastMethods>({
-    toast: (_: TToastItem) => {},
+    toast: (_: TToastItem) => { },
 });
 
 /**
@@ -33,9 +33,9 @@ const ToastContext = createContext<TToastMethods>({
  * API via React.ImperativeRef
  */
 export function ToastProvider({
-                                  children,
-                                  target,
-                              }: PropsWithChildren<{ target: string }>) {
+    children,
+    target,
+}: PropsWithChildren<{ target: string }>) {
     const [targetElement, setTarget] = useState<HTMLElement | null>(null);
 
     const toastRef = useRef<TToastMethods>(null);
@@ -73,7 +73,7 @@ export function useToast(): TToastMethods {
     return context;
 }
 
-function ToastList({ ref }: { ref: RefObject<TToastMethods> }) {
+function ToastList({ ref }: { ref: React.Ref<TToastMethods> }) {
     const [items, setItems] = useState<Array<TToastItem & { removed: boolean }>>(
         []
     );
@@ -85,8 +85,8 @@ function ToastList({ ref }: { ref: RefObject<TToastMethods> }) {
     }));
 
     const onAnimationEnd: React.AnimationEventHandler<HTMLElement> = ({
-                                                                          target,
-                                                                      }) => {
+        target,
+    }) => {
         if (!(target instanceof HTMLElement)) {
             return;
         }
