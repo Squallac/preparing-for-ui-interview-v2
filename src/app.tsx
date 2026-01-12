@@ -13,7 +13,7 @@ import { TableExample, TableVanillaExample } from "./done/05-table/table.example
 import { Markdown } from "./done/14-markdown/markdown.react";
 import { MarkdownExample } from "./done/14-markdown/markdown.example";
 import { ProgressBarExample } from "./done/15-progress-bar/progress-bar.example";
-import { SquareGameExample } from "./done/11-square-game/square-game.example";
+import { SquareGameExample, SquareGameVanillaExample } from "./done/11-square-game/square-game.example";
 import { UploadComponentExample } from "./done/16-upload-component/upload-component.example";
 import { InfiniteCanvasExample } from "./done/17-infinite-canvas/infinite-canvas.example";
 import { GalleryExample, GalleryVanillaExample } from "./done/07-gallery/gallery.example";
@@ -184,6 +184,7 @@ const SECTIONS = {
                 variants: {
                     overview: { component: createProblemOverview(squareGameProblem) },
                     react: { component: SquareGameExample },
+                    vanilla: { component: SquareGameVanillaExample },
                 },
             },
             typeahead: {

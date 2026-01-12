@@ -1,90 +1,14 @@
+import { Component } from "../abstract-component/component";
 import { getEmptyPosition, getGameState, isWin, validate } from "./square-game.utility";
+import css from './square-game.module.css';
 
-type ComponentProps = {
-    listeners?: string[];
-    className?: string;
-    tag?: keyof HTMLElementTagNameMap;
-};
-
-type Event = {
-    type: string;
-    handler: () => {};
-};
-
-const toEventName = (listener: string) =>
-    `on${listener[0].toLocaleUpperCase()}${listener.slice(1)}`;
-export abstract class Component {
-    root: HTMLElement | null;
-    listeners: string[];
-    tag: keyof HTMLElementTagNameMap;
-    className: string;
-    element: HTMLElement | null = null;
-    handlers: Event[] = [];
-
-    constructor(
-        root: HTMLElement,
-        { listeners = [], className = "", tag = "div" }: ComponentProps
-    ) {
-        this.root = root;
-        this.listeners = listeners;
-        this.tag = tag;
-        this.className = className;
-    }
-
-    init() {
-        this.element = document.createElement(this.tag);
-        this.handlers = this.listeners.map((type) => {
-            // @ts-ignore
-            const handler = this[toEventName(type)].bind(this);
-            if (handler == null) {
-                throw Error("Handler is not implemented");
-            }
-            this.getEventTarget().addEventListener(type, handler);
-            return { type, handler };
-        });
-    }
-
-    getEventTarget(): HTMLElement {
-        return this.element as HTMLElement;
-    }
-
-    render() {
-        if (this.element) {
-            this.destroy();
-        }
-        this.init();
-        if (this.element != null) {
-            this.element.innerHTML = this.toHTML();
-            this.root?.appendChild(this.element);
-        }
-        this.effect();
-    }
-
-    toHTML() {
-        return `<div>Not implemented template</div>`;
-    }
-
-    destroy() {
-        this.element?.remove();
-        this.handlers.forEach(({ type, handler }) => {
-            this.getEventTarget().removeEventListener(type, handler);
-        });
-        this.element = null;
-    }
-
-    effect() { }
-}
-
-
-type GameOfThreeProps = {};
 const GAME_SIZE = 3;
 
-
-export class GameOfThree extends Component {
+export class GameOfThree extends Component<{}> {
     state: Array<Array<number | null>>;
 
-    constructor(root: HTMLElement, props: GameOfThreeProps) {
-        super(root, { ...props, listeners: ["click"] });
+    constructor(config: { root: HTMLElement }) {
+        super({ ...config, listeners: ['click'] });
         this.state = getGameState(GAME_SIZE);
     }
 
@@ -93,44 +17,51 @@ export class GameOfThree extends Component {
             .map((row, rowIndex) => {
                 return row
                     .map((col, colIndex) => {
-                        return `<div data-row="${rowIndex}" data-col="${colIndex}" class="game__cell ${col === null ? "game__cell--empty" : ""
-                            }">
-                    ${col == null ? "empty" : col}
-                  </div>`.trim();
+                        const cellClass = col === null ? css.cell__empty : css.cell__filled;
+                        return `
+                        <div 
+                            class="${css.cell} ${cellClass}"
+                            data-row="${rowIndex}" 
+                            data-col="${colIndex}"
+                        >
+                            ${col == null ? "" : col} 
+                        </div>`.trim();
                     })
                     .join("")
-                    .trim();
             })
             .join("")
-            .trim();
+
         return `
-     <section class="game_container">
-      <div>Game status: ${isWin(this.state) ? "win" : "not yet"}</div>
-      <div class="cell_container">
-         ${cells}
-      </div>
-     </section>
-    `.trim();
+            <section class="${css.container}">
+                <div>Game status: ${isWin(this.state) ? "win" : "not yet"}</div>
+                <div class="${css.board}">
+                    ${cells}
+                </div>
+            </section>
+        `;
     }
 
-    onClick = (ev: MouseEvent) => {
-        const target = ev.target;
-        if (
-            target instanceof HTMLElement &&
-            target.classList.contains("game__cell")
-        ) {
-            const [row, col] = [
-                +(target.dataset.row ?? 0),
-                +(target.dataset.col ?? 0)
+    onClick(e: Event) {
+        const target = e.target as HTMLElement;
+        const rowStr = target.dataset.row;
+        const colStr = target.dataset.col;
+
+        if (rowStr === undefined || colStr === undefined) return;
+
+        const row = parseInt(rowStr, 10);
+        const col = parseInt(colStr, 10);
+
+        if (isNaN(row) || isNaN(col)) return;
+
+        const [emptyRow, emptyCol] = getEmptyPosition(this.state);
+        if (validate([row, col], [emptyRow, emptyCol])) {
+            const newState = this.state.map(r => [...r]);
+            [newState[row][col], newState[emptyRow][emptyCol]] = [
+                newState[emptyRow][emptyCol],
+                newState[row][col]
             ];
-            const [emptyRow, emptyCol] = getEmptyPosition(this.state);
-            if (validate([row, col], [emptyRow, emptyCol])) {
-                [this.state[row][col], this.state[emptyRow][emptyCol]] = [
-                    this.state[emptyRow][emptyCol],
-                    this.state[row][col]
-                ];
-                this.render();
-            }
+            this.state = newState;
+            this.render();
         }
-    };
+    }
 }

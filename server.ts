@@ -127,6 +127,36 @@ Bun.serve({
             }
         }
 
+        // GET /api/typeahead - Search typeahead entries
+        if (url.pathname === "/api/typeahead" && req.method === "GET") {
+            const query = url.searchParams.get("query") || "";
+            const limit = parseInt(url.searchParams.get("limit") || "10");
+
+            // Simulate 2s delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            try {
+                const file = Bun.file("./src/done/12-typeahead/data.json");
+                // TODO: caching strategy for production, but for now file read is fine
+                const text = await file.text();
+                const data = JSON.parse(text) as Array<{ query: string, id: string, value: string }>;
+
+                const filtered = data
+                    .filter(item => item.query.toLowerCase().includes(query.toLowerCase()))
+                    .slice(0, limit);
+
+                return new Response(JSON.stringify(filtered), {
+                    headers: {
+                        ...headers,
+                        "Content-Type": "application/json",
+                    },
+                });
+            } catch (e) {
+                console.error(e);
+                return new Response("Error processing request", { status: 500, headers });
+            }
+        }
+
         return new Response("Not Found", { status: 404, headers });
     },
 });

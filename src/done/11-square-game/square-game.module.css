@@ -9,21 +9,22 @@
 .cell {
     width: 200px;
     height: 200px;
-    background-color: white;
-    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
     user-select: none;
     cursor: pointer;
     border: 1px solid #eee;
+    color: white;
+    font-size: 3rem;
 }
 
 .cell__empty {
-    background-color: #eee;
+    background-color: #545252;
     cursor: default;
 }
 
 .cell__filled {
+    background: linear-gradient(45deg, black, #a33c75c4);
     cursor: pointer;
 }
 
