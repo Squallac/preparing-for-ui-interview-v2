@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import styles from './gallery.module.css';
 import flex from '@course/styles';
 import cx from '@course/cx';
@@ -7,7 +7,7 @@ export type TGalleryProps = {
     images: string[];
 };
 
-export class Gallery extends Component<TGalleryProps> {
+export class Gallery extends AbstractComponent<TGalleryProps> {
     private list: HTMLUListElement | null = null;
     private prevBtn: HTMLButtonElement | null = null;
     private nextBtn: HTMLButtonElement | null = null;

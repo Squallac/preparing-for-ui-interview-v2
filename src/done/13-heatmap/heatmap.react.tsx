@@ -1,70 +1,55 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
-import css from "./heatmap.module.css";
+import { useLayoutEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import styles from "./heatmap.module.css";
+import { HeatmapChart } from "./heatmap-chart";
 
-export type HeatmapHandle = {
-    update: (x: number, y: number, value: number) => void;
-    clear: () => void;
+export type HeatmapRef = {
+    addPoint: (x: number, y: number, value: number) => void;
 }
 
-type THeatmapProps = {
-    size: number;
-}
-
-export const HeatmapComponent = forwardRef<HeatmapHandle, THeatmapProps>(({ size }, ref) => {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const cellsMapRef = useRef<Map<string, HTMLDivElement>>(new Map());
+export const Heatmap = forwardRef<HeatmapRef, { size?: number }>(({ size = 100 }, ref) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const parentRef = useRef<HTMLDivElement>(null);
+    const heatmap = useRef<HeatmapChart>(null);
 
     useImperativeHandle(ref, () => ({
-        update: (x: number, y: number, value: number) => {
-            if (!containerRef.current) return;
-
-            const key = `${x},${y}`;
-            const map = cellsMapRef.current;
-            const clampedValue = Math.min(1, Math.max(0, value));
-
-            // If value is 0 or less, remove the cell
-            if (clampedValue <= 0) {
-                const element = map.get(key);
-                if (element) {
-                    element.remove();
-                    map.delete(key);
-                }
-                return;
-            }
-
-            // Update or Create
-            let element = map.get(key);
-            if (!element) {
-                element = document.createElement('div');
-                element.className = css.cell;
-                element.style.gridColumn = `${x + 1}`;
-                element.style.gridRow = `${y + 1}`;
-
-                containerRef.current.appendChild(element);
-                map.set(key, element);
-            }
-
-            // Efficiently update opacity
-            element.style.opacity = clampedValue.toString();
-        },
-        clear: () => {
-            const map = cellsMapRef.current;
-            map.forEach(element => element.remove());
-            map.clear();
+        addPoint: (x, y, value) => {
+            heatmap.current?.addPoint({ x, y, value });
         }
     }));
 
+    useLayoutEffect(() => {
+        if (canvasRef.current && parentRef.current) {
+            heatmap.current = new HeatmapChart(
+                canvasRef.current.getContext("2d")!,
+                parentRef.current,
+                canvasRef.current,
+                size
+            );
+            heatmap.current.render();
+        }
+    }, [size]);
+
+    useLayoutEffect(() => {
+        const observer = new ResizeObserver(([entry]) => {
+            if (entry && parentRef.current && canvasRef.current) {
+                const { width, height } = entry.contentRect;
+
+                // Sync canvas internal resolution with its display size
+                canvasRef.current.width = width;
+                canvasRef.current.height = height;
+
+                heatmap.current?.render();
+            }
+        });
+
+        if (parentRef.current) observer.observe(parentRef.current);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <div
-            ref={containerRef}
-            className={css.container}
-            style={{
-                '--size': size,
-            } as React.CSSProperties}
-        />
+        <div ref={parentRef} className={styles.container}>
+            <canvas ref={canvasRef} className={styles.canvas} />
+        </div>
     );
 });
-
-HeatmapComponent.displayName = "HeatmapComponent";
-
 

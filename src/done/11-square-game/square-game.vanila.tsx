@@ -1,10 +1,10 @@
-import { Component } from "../abstract-component/component";
+import { AbstractComponent } from "../00-abstract-component/component";
 import { getEmptyPosition, getGameState, isWin, validate } from "./square-game.utility";
 import css from './square-game.module.css';
 
 const GAME_SIZE = 3;
 
-export class GameOfThree extends Component<{}> {
+export class GameOfThree extends AbstractComponent<{}> {
     state: Array<Array<number | null>>;
 
     constructor(config: { root: HTMLElement }) {

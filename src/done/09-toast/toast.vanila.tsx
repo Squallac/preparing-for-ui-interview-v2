@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import css from './toast.module.css';
 import './toast.animations.css';
 
@@ -9,7 +9,7 @@ type TToastItem = {
 };
 
 let toastInstanceID = 0;
-export class Toast extends Component<{}> {
+export class Toast extends AbstractComponent<{}> {
 
     id = toastInstanceID++;
     listElement: HTMLUListElement | null = null;

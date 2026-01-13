@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import css from './tooltip.module.css';
 
 
@@ -54,7 +54,7 @@ function getAutoPosition(tooltip: HTMLElement, container: HTMLElement) {
 }
 
 
-export class Tooltip extends Component<TTooltipProps> {
+export class Tooltip extends AbstractComponent<TTooltipProps> {
 
     id = id++;
     tooltipElement: HTMLElement | null = null;

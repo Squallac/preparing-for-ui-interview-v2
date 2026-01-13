@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import flex from '@course/styles';
 import cx from '@course/cx';
 import css from './tabs.module.css';
@@ -15,7 +15,7 @@ export type TTabsProps = {
     tabs: TTabProps[];
 }
 
-export class Tabs extends Component<TTabsProps> {
+export class Tabs extends AbstractComponent<TTabsProps> {
     #defaultTab: string;
     #contentContainer: HTMLElement | null = null;
     #activeTabName: string | undefined;

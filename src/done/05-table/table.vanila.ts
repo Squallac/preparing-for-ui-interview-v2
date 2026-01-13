@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import styles from './table.module.css';
 import flex from '@course/styles';
 import cx from '@course/cx';
@@ -21,7 +21,7 @@ export type TTableProps<T> = {
     onSort?: (columnId: keyof T, direction: 'asc' | 'desc' | 'none') => void;
 };
 
-export class Table<T extends { id: string }> extends Component<TTableProps<T>> {
+export class Table<T extends { id: string }> extends AbstractComponent<TTableProps<T>> {
     private tbody: HTMLTableSectionElement | null = null;
     private prevBtn: HTMLButtonElement | null = null;
     private nextBtn: HTMLButtonElement | null = null;

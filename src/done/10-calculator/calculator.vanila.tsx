@@ -1,4 +1,4 @@
-import { Component } from "../abstract-component/component";
+import { AbstractComponent } from "../00-abstract-component/component";
 import css from './calculator.module.css';
 
 interface ICalculatorState {
@@ -8,7 +8,7 @@ interface ICalculatorState {
 import { BUTTONS, INVALID_VALUE } from './calculator.utils';
 
 
-export class Calculator extends Component<{}> {
+export class Calculator extends AbstractComponent<{}> {
 
     state: ICalculatorState = {
         value: '0'

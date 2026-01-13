@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import { type IRedditComment } from "./reddit-thread.react";
 import styles from "./reddit-thread.module.css";
 import flex from "@course/styles";
@@ -8,7 +8,7 @@ export type TRedditThreadProps = {
     comments: IRedditComment[];
 };
 
-export class RedditThread extends Component<TRedditThreadProps> {
+export class RedditThread extends AbstractComponent<TRedditThreadProps> {
     constructor(config: TComponentConfig<TRedditThreadProps>) {
         super({
             ...config,

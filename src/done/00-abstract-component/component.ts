@@ -20,7 +20,7 @@ const toEventName = (type: string) => {
     else return `on${type[0].toUpperCase()}${type.slice(1)}`
 }
 
-export abstract class Component<T extends object> {
+export abstract class AbstractComponent<T extends object> {
 
     container: HTMLElement | null;
     config: TComponentConfig<T>;

@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component"
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component"
 import styles from './accordion.module.css'
 
 import flex from '@course/styles';
@@ -13,7 +13,7 @@ export type TAccordionItem = {
     content: string;
 };
 
-export class Accordion extends Component<TAccordionProps> {
+export class Accordion extends AbstractComponent<TAccordionProps> {
 
     constructor(config: TComponentConfig<TAccordionProps>) {
         super({

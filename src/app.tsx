@@ -10,18 +10,18 @@ import { AccordionExample, AccordionVanillaExample } from "./done/01-accordion/a
 import { TabsExample, TabsVanillaExample } from "./done/03-tabs/tabs.example";
 import { TooltipExample, TooltipVanillaExample } from "./done/04-tooltip/tooltip.example";
 import { TableExample, TableVanillaExample } from "./done/05-table/table.example";
-import { Markdown } from "./done/14-markdown/markdown.react";
-import { MarkdownExample } from "./done/14-markdown/markdown.example";
-import { ProgressBarExample } from "./done/15-progress-bar/progress-bar.example";
+import { Markdown } from "./done/17-markdown/markdown.react";
+import { MarkdownExample } from "./done/17-markdown/markdown.example";
+import { ProgressBarExample, ProgressBarVanillaExample } from "./done/15-progress-bar/progress-bar.example";
 import { SquareGameExample, SquareGameVanillaExample } from "./done/11-square-game/square-game.example";
 import { UploadComponentExample } from "./done/16-upload-component/upload-component.example";
-import { InfiniteCanvasExample } from "./done/17-infinite-canvas/infinite-canvas.example";
+import { InfiniteCanvasExample } from "./done/19-infinite-canvas/infinite-canvas.example";
 import { GalleryExample, GalleryVanillaExample } from "./done/07-gallery/gallery.example";
-import { GPTComponentExample } from "./done/18-gpt-chat/gpt-chat.example";
-import { HeatmapExample } from "./done/13-heatmap/heatmap.example";
+import { GPTComponentExample, GPTChatVanillaExample } from "./done/18-gpt-chat/gpt-chat.example";
+import { HeatmapExample, HeatmapVanillaExample } from "./done/13-heatmap/heatmap.example";
 import { RedditThreadExample, RedditThreadVanillaExample } from "./done/06-reddit-thread/reddit-thread.example";
 import { StarRatingExample, StarRatingVanillaExample } from "./done/02-star-rating/star-rating.example";
-import { VideoPlayerExample } from "./done/19-video-player/video-player.example";
+import { VideoPlayerExample, VideoPlayerVanillaExample } from "./done/14-video-player/video-player.example";
 import { CalculatorExample, CalculatorVanillaExample } from "./done/10-calculator/calculator.example";
 import { TypeaheadExample, TypeaheadVanillaExample } from "./done/12-typeahead/typeahead.example";
 
@@ -32,17 +32,17 @@ import accordionProblem from "./done/01-accordion/problem.md" with { type: 'text
 import tabsProblem from "./done/03-tabs/problem.md" with { type: 'text' };
 import tooltipProblem from "./done/04-tooltip/problem.md" with { type: 'text' };
 import tableProblem from "./done/05-table/problem.md" with { type: 'text' };
-import markdownProblem from "./done/14-markdown/problem.md" with { type: 'text' };
+import markdownProblem from "./done/17-markdown/problem.md" with { type: 'text' };
 import squareGameProblem from "./done/11-square-game/problem.md" with { type: 'text' };
 import progressBarProblem from "./done/15-progress-bar/problem.md" with { type: 'text' };
 import uploadComponentProblem from "./done/16-upload-component/problem.md" with { type: 'text' };
-import infiniteCanvasProblem from "./done/17-infinite-canvas/problem.md" with { type: 'text' };
+import infiniteCanvasProblem from "./done/19-infinite-canvas/problem.md" with { type: 'text' };
 import galleryProblem from "./done/07-gallery/problem.md" with { type: 'text' };
 import gptChatProblem from "./done/18-gpt-chat/problem.md" with { type: 'text' };
 import heatmapProblem from "./done/13-heatmap/problem.md" with { type: 'text' };
 import redditThreadProblem from "./done/06-reddit-thread/problem.md" with { type: 'text' };
 import starRatingProblem from "./done/02-star-rating/problem.md" with { type: 'text' };
-import videoPlayerProblem from "./done/19-video-player/problem.md" with { type: 'text' };
+import videoPlayerProblem from "./done/14-video-player/problem.md" with { type: 'text' };
 import calculatorProblem from "./done/10-calculator/problem.md" with { type: 'text' };
 import typeaheadProblem from "./done/12-typeahead/problem.md" with { type: 'text' };
 
@@ -204,15 +204,17 @@ const SECTIONS = {
                 variants: {
                     overview: { component: createProblemOverview(heatmapProblem) },
                     react: { component: HeatmapExample },
+                    vanilla: { component: HeatmapVanillaExample },
                 },
             },
-            markdown: {
-                id: "markdown",
-                name: "Markdown",
-                difficulty: "easy",
+            videoPlayer: {
+                id: "videoPlayer",
+                name: "Video Player",
+                difficulty: "medium",
                 variants: {
-                    overview: { component: createProblemOverview(markdownProblem) },
-                    react: { component: MarkdownExample },
+                    overview: { component: createProblemOverview(videoPlayerProblem) },
+                    react: { component: VideoPlayerExample },
+                    vanilla: { component: VideoPlayerVanillaExample },
                 },
             },
             progressBar: {
@@ -222,6 +224,7 @@ const SECTIONS = {
                 variants: {
                     overview: { component: createProblemOverview(progressBarProblem) },
                     react: { component: ProgressBarExample },
+                    vanilla: { component: ProgressBarVanillaExample },
                 },
             },
             uploadComponent: {
@@ -233,6 +236,25 @@ const SECTIONS = {
                     react: { component: UploadComponentExample },
                 },
             },
+            markdown: {
+                id: "markdown",
+                name: "Markdown",
+                difficulty: "easy",
+                variants: {
+                    overview: { component: createProblemOverview(markdownProblem) },
+                    react: { component: MarkdownExample },
+                },
+            },
+            gptChat: {
+                id: "gptChat",
+                name: "GPT Chat",
+                difficulty: "medium",
+                variants: {
+                    overview: { component: createProblemOverview(gptChatProblem) },
+                    react: { component: GPTComponentExample },
+                    vanilla: { component: GPTChatVanillaExample },
+                },
+            },
             infiniteCanvas: {
                 id: "infiniteCanvas",
                 name: "Infinite Canvas",
@@ -240,24 +262,6 @@ const SECTIONS = {
                 variants: {
                     overview: { component: createProblemOverview(infiniteCanvasProblem) },
                     react: { component: InfiniteCanvasExample },
-                },
-            },
-            gptChat: {
-                id: "gptChat",
-                name: "GPT Chat",
-                difficulty: "easy",
-                variants: {
-                    overview: { component: createProblemOverview(gptChatProblem) },
-                    react: { component: GPTComponentExample },
-                },
-            },
-            videoPlayer: {
-                id: "videoPlayer",
-                name: "Video Player",
-                difficulty: "easy",
-                variants: {
-                    overview: { component: createProblemOverview(videoPlayerProblem) },
-                    react: { component: VideoPlayerExample },
                 },
             },
         } as Record<string, TProblem>,

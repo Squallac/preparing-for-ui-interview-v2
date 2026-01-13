@@ -1,4 +1,4 @@
-import { Component } from "../abstract-component/component";
+import { AbstractComponent } from "../00-abstract-component/component";
 import { Trie } from "./trie";
 import styles from "./typeahead.module.css";
 import type { TTypeaheadEntry } from "./typeahead.react";
@@ -9,7 +9,7 @@ type TTypeaheadProps = {
     itemRender?: (item: TTypeaheadEntry<any>) => string;
 }
 
-export class Typeahead extends Component<TTypeaheadProps> {
+export class Typeahead extends AbstractComponent<TTypeaheadProps> {
     private trie: Trie<TTypeaheadEntry<any>>;
     private items: TTypeaheadEntry<any>[] = [];
     private query: string = "";

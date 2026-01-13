@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import flex from '@course/styles';
 import cx from '@course/cx';
 
@@ -29,7 +29,7 @@ function process(acc: Record<string, TCheckboxItem>, item: TCheckboxItem, parent
     return acc;
 }
 
-export class CheckboxTree extends Component<{ items: TCheckboxItem[] }> {
+export class CheckboxTree extends AbstractComponent<{ items: TCheckboxItem[] }> {
 
     state: Record<string, TCheckboxItem> = {};
 

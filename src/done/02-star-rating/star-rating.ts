@@ -1,4 +1,4 @@
-import { Component, type TComponentConfig } from "../abstract-component/component";
+import { AbstractComponent, type TComponentConfig } from "../00-abstract-component/component";
 import styles from './star-rating.module.css'
 import flex from '@course/styles'
 
@@ -11,7 +11,7 @@ type TStarRatingProps = {
 const STAR = '⭐️';
 const STARS_COUNT = 5;
 
-export class StarRating extends Component<TStarRatingProps> {
+export class StarRating extends AbstractComponent<TStarRatingProps> {
     private value: number = 0;
 
     constructor(config: TComponentConfig<TStarRatingProps>) {

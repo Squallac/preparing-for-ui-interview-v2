@@ -1,5 +1,5 @@
 import css from "./video-player.module.css";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 // Real video sources for different resolutions (10s clips for testing)
 const VIDEO_SOURCES: Record<string, string> = {
@@ -9,50 +9,63 @@ const VIDEO_SOURCES: Record<string, string> = {
 };
 const QUALITIES = Object.keys(VIDEO_SOURCES);
 
+type TVideoPlayerState = {
+    isPlaying: boolean;
+    progress: number;
+    duration: number;
+    currentTime: number;
+    quality: string;
+}
+
+const formatTime = (time: number) => {
+    if (!isFinite(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+};
+
 export const VideoPlayerComponent = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [progress, setProgress] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [quality, setQuality] = useState(QUALITIES[0]);
 
-    // Store state to restore after quality switch
-    const savedState = useRef<{ time: number, wasPlaying: boolean }>({ time: 0, wasPlaying: false });
-    const isSwitchingQuality = useRef(false);
+    const [state, setState] = useState<TVideoPlayerState>(
+        {
+            isPlaying: false, progress: 0, duration: 0, currentTime: 0, quality: QUALITIES[0]
+        });
+
+    const savedState = useRef({ time: 0, wasPlaying: false });
 
     const togglePlay = () => {
         if (videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.pause();
-            } else {
+            if (videoRef.current.paused) {
                 videoRef.current.play();
+            } else {
+                videoRef.current.pause();
             }
-            setIsPlaying(!isPlaying);
         }
     };
 
     const handleTimeUpdate = () => {
-        if (videoRef.current && !isSwitchingQuality.current) {
+        if (videoRef.current) {
             const current = videoRef.current.currentTime;
             const dur = videoRef.current.duration;
-            setCurrentTime(current);
-            setProgress(dur > 0 ? (current / dur) * 100 : 0);
+            setState((s) => ({
+                ...s,
+                currentTime: current,
+                duration: dur,
+                progress: dur > 0 ? (current / dur) * 100 : 0
+            }));
         }
     };
 
     const handleLoadedMetadata = () => {
         if (videoRef.current) {
-            setDuration(videoRef.current.duration);
-
-            // Restore state if we just switched quality
-            if (isSwitchingQuality.current) {
+            setState((s) => ({ ...s, duration: videoRef.current!.duration }));
+            if (savedState.current.time > 0) {
                 videoRef.current.currentTime = savedState.current.time;
                 if (savedState.current.wasPlaying) {
                     videoRef.current.play().catch(e => console.error("Auto-play failed after switch", e));
-                    setIsPlaying(true);
                 }
-                isSwitchingQuality.current = false;
+                savedState.current = { time: 0, wasPlaying: false }; // Reset
             }
         }
     };
@@ -63,26 +76,17 @@ export const VideoPlayerComponent = () => {
                 time: videoRef.current.currentTime,
                 wasPlaying: !videoRef.current.paused
             };
-            isSwitchingQuality.current = true;
-            setQuality(newQuality);
+            setState((s) => ({ ...s, quality: newQuality }));
         }
     };
 
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = Number(e.target.value);
         if (videoRef.current) {
-            const newTime = (newValue / 100) * duration;
+            const newTime = (newValue / 100) * state.duration;
             videoRef.current.currentTime = newTime;
-            setProgress(newValue);
-            setCurrentTime(newTime);
+            setState((s) => ({ ...s, progress: newValue, currentTime: newTime }));
         }
-    };
-
-    const formatTime = (time: number) => {
-        if (!isFinite(time)) return "0:00";
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time % 60);
-        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
 
     return (
@@ -90,37 +94,37 @@ export const VideoPlayerComponent = () => {
             <video
                 ref={videoRef}
                 className={css.video}
-                src={VIDEO_SOURCES[quality]}
+                src={VIDEO_SOURCES[state.quality]}
                 controls={false}
                 playsInline
                 onClick={togglePlay}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
+                onPlay={() => setState((s) => ({ ...s, isPlaying: true }))}
+                onPause={() => setState((s) => ({ ...s, isPlaying: false }))}
             />
 
             <div className={css.controls}>
-                <button onClick={togglePlay} className={css.playButton}>
-                    {isPlaying ? "⏸️" : "▶️"}
+                <button onClick={togglePlay} className={css.playButton} aria-label={state.isPlaying ? "Pause" : "Play"}>
+                    {state.isPlaying ? "⏸️" : "▶️"}
                 </button>
 
                 <span className={css.time}>
-                    {formatTime(currentTime)} / {formatTime(duration)}
+                    {formatTime(state.currentTime)} / {formatTime(state.duration)}
                 </span>
 
                 <input
                     type="range"
                     min="0"
                     max="100"
-                    value={progress}
+                    value={state.progress}
                     onChange={handleSeek}
                     className={css.progressBar}
                 />
 
                 <select
                     className={css.select}
-                    value={quality}
+                    value={state.quality}
                     onChange={(e) => handleQualityChange(e.target.value)}
                     title="Quality"
                 >

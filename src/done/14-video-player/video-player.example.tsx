@@ -1,16 +1,16 @@
-import { GPTComponent } from "./gpt-chat.react";
-import { GPTChat } from "./gpt-chat.vanila";
+import { VideoPlayerComponent } from "./video-player.react";
+import { VideoPlayer } from "./video-player.vanila";
 import { useEffect, useRef } from "react";
 
-export const GPTComponentExample = () => <GPTComponent />;
+export const VideoPlayerExample = () => <VideoPlayerComponent />;
 
-export const GPTChatVanillaExample = () => {
+export const VideoPlayerVanillaExample = () => {
     const rootRef = useRef<HTMLDivElement>(null);
-    const instanceRef = useRef<GPTChat | null>(null);
+    const instanceRef = useRef<VideoPlayer | null>(null);
 
     useEffect(() => {
         if (!rootRef.current) return;
-        instanceRef.current = new GPTChat({ root: rootRef.current });
+        instanceRef.current = new VideoPlayer({ root: rootRef.current });
         instanceRef.current.render();
 
         return () => {
