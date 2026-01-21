@@ -52,8 +52,8 @@ type TDialogProps = {
 }
 
 // Methods
-dialog.open()   // Show the modal
-dialog.close()  // Close the modal
+dialog.open() // Show the modal
+dialog.close() // Close the modal
 ```
 
 ## Solution Approach

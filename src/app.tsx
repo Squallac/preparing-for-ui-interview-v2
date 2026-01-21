@@ -63,10 +63,11 @@ import {
   TypeaheadExample,
   TypeaheadVanillaExample,
 } from './problems/components/13-typeahead/typeahead.example'
+import { DialogExample, DialogVanillaExample } from './problems/components/04-dialog/dialog.example'
 import {
-  DialogExample,
-  DialogVanillaExample,
-} from './problems/components/04-dialog/dialog.example'
+  PortfolioVisualizerExample,
+  PortfolioVisualizerVanillaExample,
+} from './problems/components/18-portfolio-visualizer/portfolio-visualizer.example'
 
 // Import problem markdown files (Bun text imports)
 import toastProblem from './problems/components/10-toast/problem.md' with { type: 'text' }
@@ -80,7 +81,7 @@ import markdownProblem from './problems/components/19-markdown/problem.md' with 
 import squareGameProblem from './problems/components/12-square-game/problem.md' with { type: 'text' }
 import progressBarProblem from './problems/components/16-progress-bar/problem.md' with { type: 'text' }
 import uploadComponentProblem from './problems/components/17-upload-component/problem.md' with { type: 'text' }
-import portfolioVisualizerProblem from './problems/components/18-portfolio-visualizer(todo)/problem.md' with { type: 'text' }
+import portfolioVisualizerProblem from './problems/components/18-portfolio-visualizer/problem.md' with { type: 'text' }
 import infiniteCanvasProblem from './problems/components/21-infinite-canvas/problem.md' with { type: 'text' }
 import galleryProblem from './problems/components/08-gallery/problem.md' with { type: 'text' }
 import gptChatProblem from './problems/components/20-gpt-chat/problem.md' with { type: 'text' }
@@ -220,11 +221,41 @@ import tsGreaterThan from './problems/typescript/09-expert-techniques/03-greater
 // @ts-expect-error: No default export
 import tsTranspose from './problems/typescript/09-expert-techniques/04-transpose.ts' with { type: 'text' }
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+// Custom code component for ReactMarkdown with syntax highlighting
+const CodeBlock = ({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) => {
+  const match = /language-(\w+)/.exec(className || '')
+  const code = String(children).replace(/\n$/, '')
+
+  if (match) {
+    return (
+      <SyntaxHighlighter
+        style={vscDarkPlus}
+        language={match[1]}
+        PreTag="div"
+        customStyle={{ borderRadius: '8px', fontSize: '0.9rem' }}
+      >
+        {code}
+      </SyntaxHighlighter>
+    )
+  }
+
+  return (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  )
+}
+
 // Helper to create a problem overview component
 const createProblemOverview = (markdownContent: string) => {
   return () => (
     <div className={css.markdownContent} style={{ padding: '20px' }}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdownContent}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ code: CodeBlock }}>
+        {markdownContent}
+      </ReactMarkdown>
     </div>
   )
 }
@@ -501,6 +532,8 @@ const SECTIONS = {
         difficulty: 'extreme',
         variants: {
           overview: { component: createProblemOverview(portfolioVisualizerProblem) },
+          react: { component: PortfolioVisualizerExample },
+          vanilla: { component: PortfolioVisualizerVanillaExample },
         },
       },
       markdown: {
@@ -949,7 +982,22 @@ export default function App() {
     return 'tabs:react'
   }
 
+  // Get initial open sections from localStorage or defaults
+  const getInitialOpenSections = (): Record<string, boolean> => {
+    const stored = localStorage.getItem('sidebarOpenSections')
+    if (stored) {
+      return JSON.parse(stored)
+    }
+    // Default: main chapters open
+    return {
+      javascriptProblems: true,
+      components: true,
+      typescript: true,
+    }
+  }
+
   const [selectedId, setSelectedId] = useState<string>(getInitialExample)
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(getInitialOpenSections)
 
   const SelectedComponent = useMemo(() => findComponentBySelection(selectedId), [selectedId])
 
@@ -962,52 +1010,76 @@ export default function App() {
     window.history.replaceState({}, '', url.toString())
   }
 
+  // Handle section toggle and persist to localStorage
+  const handleSectionToggle = (sectionKey: string, isOpen: boolean) => {
+    setOpenSections((prev) => {
+      const updated = { ...prev, [sectionKey]: isOpen }
+      localStorage.setItem('sidebarOpenSections', JSON.stringify(updated))
+      return updated
+    })
+  }
+
   return (
     <div className={css.app}>
       <div className={css.container}>
         <div className={css.sidebar}>
-          {Object.entries(SECTIONS).map(([sectionKey, section]) => (
-            <div key={sectionKey} className={css.sidebarSection}>
-              <h4 className={css.sectionTitle}>{section.title}</h4>
-              {Object.keys(section.items).length === 0 ? (
-                <p className={css.emptySection}>No items yet</p>
-              ) : (
-                <ul className={css.problemList}>
-                  {Object.entries(section.items).map(([problemId, problem], index) => (
-                    <li key={problemId} className={css.problemItem}>
-                      <div className={css.problemHeader}>
-                        <span className={css.problemName}>
-                          {index + 1}. {problem.name}
-                        </span>
-                        <span className={`${css.chip} ${css[problem.difficulty]}`}>
-                          {problem.difficulty}
-                        </span>
-                      </div>
-                      <ul className={css.variantList}>
-                        {(Object.keys(problem.variants) as TVariantType[]).map((variant) => (
-                          <li key={variant}>
-                            <button
-                              className={selectedId === `${problemId}:${variant}` ? css.active : ''}
-                              onClick={() => handleSelectVariant(problemId, variant)}
-                            >
-                              {variant === 'overview'
-                                ? 'Problem Overview'
-                                : variant === 'react'
-                                  ? 'React'
-                                  : 'Vanilla'}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+          {Object.entries(SECTIONS).map(([sectionKey, section]) => {
+            const showSeparator = sectionKey === 'components' || sectionKey === 'typescript'
+
+            return (
+              <div key={sectionKey}>
+                {showSeparator && <hr className={css.sectionDivider} />}
+                <details
+                  className={css.sidebarSection}
+                  open={openSections[sectionKey] ?? false}
+                  onToggle={(e) =>
+                    handleSectionToggle(sectionKey, (e.target as HTMLDetailsElement).open)
+                  }
+                >
+                  <summary className={css.sectionTitle}>{section.title}</summary>
+                  {Object.keys(section.items).length === 0 ? (
+                    <p className={css.emptySection}>No items yet</p>
+                  ) : (
+                    <ul className={css.problemList}>
+                      {Object.entries(section.items).map(([problemId, problem], index) => (
+                        <li key={problemId} className={css.problemItem}>
+                          <div className={css.problemHeader}>
+                            <span className={css.problemName}>
+                              {index + 1}. {problem.name}
+                            </span>
+                            <span className={`${css.chip} ${css[problem.difficulty]}`}>
+                              {problem.difficulty}
+                            </span>
+                          </div>
+                          <ul className={css.variantList}>
+                            {(Object.keys(problem.variants) as TVariantType[]).map((variant) => (
+                              <li key={variant}>
+                                <button
+                                  className={
+                                    selectedId === `${problemId}:${variant}` ? css.active : ''
+                                  }
+                                  onClick={() => handleSelectVariant(problemId, variant)}
+                                >
+                                  {variant === 'overview'
+                                    ? 'Problem Overview'
+                                    : variant === 'react'
+                                      ? 'React'
+                                      : 'Vanilla'}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </details>
+              </div>
+            )
+          })}
         </div>
         <div className={css.content}>
-          {/* eslint-disable-next-line react-hooks/static-components */}
+          {}
           {SelectedComponent ? <SelectedComponent /> : <NotFound />}
         </div>
       </div>

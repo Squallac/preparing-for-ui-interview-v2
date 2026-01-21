@@ -3,7 +3,12 @@ import css from './dialog.module.css'
 import styles from '@course/styles'
 import cx from '@course/cx'
 
-type TDialogProps = { open: boolean, onConfirm: () => void, onCancel: () => void, children: React.ReactNode }
+type TDialogProps = {
+  open: boolean
+  onConfirm: () => void
+  onCancel: () => void
+  children: React.ReactNode
+}
 
 export function Dialog({ open, onConfirm, onCancel, children }: TDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -12,7 +17,7 @@ export function Dialog({ open, onConfirm, onCancel, children }: TDialogProps) {
     const dialog = dialogRef.current
     if (!dialog) return
     if (open) {
-      dialog.showModal();
+      dialog.showModal()
     } else {
       dialog.close()
     }
@@ -20,11 +25,11 @@ export function Dialog({ open, onConfirm, onCancel, children }: TDialogProps) {
 
   return (
     <dialog ref={dialogRef} className={cx(styles.padding24, css.container)} onClose={onCancel}>
-      <section className={styles.paddingVer8}>
-        {children}
-      </section>
+      <section className={styles.paddingVer8}>{children}</section>
       <footer className={cx(styles.flexRowBetween, styles.flexGap8, styles.paddingVer8)}>
-        <button autoFocus onClick={onConfirm}>Confirm</button>
+        <button autoFocus onClick={onConfirm}>
+          Confirm
+        </button>
         <button onClick={onCancel}>Cancel</button>
       </footer>
     </dialog>

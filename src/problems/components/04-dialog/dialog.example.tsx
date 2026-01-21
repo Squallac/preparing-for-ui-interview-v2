@@ -5,9 +5,8 @@ import { Dialog as VanillaDialog } from './dialog.vanila'
 export function DialogExample() {
   const [open, setOpen] = useState(false)
 
-  const handleConfirm = () => setOpen(false);
+  const handleConfirm = () => setOpen(false)
   const handleCancel = () => setOpen(false)
-  
 
   return (
     <div>
