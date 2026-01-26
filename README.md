@@ -6,11 +6,11 @@ This is a **Frontend Masters - Prepare for UI Interview V2** supporting repo. He
 
 The course is divided into multiple sections, and with each section, we will gradually increase the difficulty.
 
-### Classic JavaScript Problems
+### 1. Classic JavaScript Problems
 
 This section serves as a warm-up. We will start with short (5–10 minute) problems that provide an overview of common JavaScript utilities and patterns frequently tested in interviews.
 
-### Practical UI Problems
+### 2. Practical UI Problems
 
 Here, we will get our hands dirty and implement real UI patterns, components, and parts of applications.
 We will actively use **HTML**, **CSS**, **TypeScript**, and **React**.
@@ -21,14 +21,15 @@ Each problem will have:
 - A React-based solution
 
 During the workshop, we will intentionally switch between vanilla JavaScript and React to strengthen both skill sets.
+I strongly advise you to **disable** all AI assistance and practice the problems on your own. The goal of this section is to acquire all the necessary skills to solve UI component problems using both React and Vanilla approaches.
 
-### TypeScript Problems
+### 3. TypeScript Problems
 
-Finally, we will cover essential TypeScript type-level programming—the kind often asked in senior and staff-level frontend interviews.
+Finally, we will cover essential TypeScript type-level programming—the kind often asked in senior and staff-level frontend interviews. This is often called "type programming". You can even code the Doom game in TypeScript types! But, luckily for us, we won't get that deep :)
 
 ## 🧠 Problem Difficulty
 
-The problems in this workshop are intentionally slightly harder than real interview questions.
+The problems in this workshop are intentionally **slightly** harder than real interview questions.
 The idea is simple: **If you train on harder problems, real interviews will feel calmer and more manageable.**
 
 Problems are grouped into the following difficulty levels:
@@ -105,6 +106,9 @@ npx tsc --noEmit
 ```
 
 ## 📚 Table of Contents
+
+You can find the list of problems and solutions here. During the workshop, we'll solve each problem
+either in React or Vanilla TS, but this repo contains both solutions for reference :)
 
 ### 1. Vanilla JS / DOM API
 
