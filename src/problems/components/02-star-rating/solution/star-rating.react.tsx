@@ -40,7 +40,7 @@ export const StarRatingComponent = ({ readonly, value, onChange }: TStarRatingPr
             <button
               aria-readonly={readonly}
               data-star-value={starValue}
-              className={cx(css.star, flex.flexColumnCenter)}
+              className={cx(css.star, flex.flexColumnCenter, flex.fontXL)}
               aria-label={`${starValue} Star${starValue === 1 ? '' : 's'}`}
               aria-checked={value === starValue}
               role="radio"

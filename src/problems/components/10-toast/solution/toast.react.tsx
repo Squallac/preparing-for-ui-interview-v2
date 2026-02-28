@@ -29,7 +29,7 @@ type TToastItem = {
 }
 
 const ToastContext = createContext<TToastMethods>({
-  toast: (_: TToastItem) => { },
+  toast: (_: TToastItem) => {},
 })
 
 /**

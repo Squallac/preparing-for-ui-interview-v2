@@ -17,7 +17,12 @@ export class Accordion extends AbstractComponent<TAccordionProps> {
   constructor(config: TComponentConfig<TAccordionProps>) {
     super({
       ...config,
-      className: [styles.container, flex.flexColumnGap12, ...(config.className || [])],
+      className: [
+        styles.container,
+        flex.maxW600px,
+        flex.flexColumnGap12,
+        ...(config.className || []),
+      ],
     })
   }
 
@@ -26,7 +31,7 @@ export class Accordion extends AbstractComponent<TAccordionProps> {
       .map((item) => {
         return `
                 <details class="${styles.details}">
-                    <summary class="${cx(styles.summary, flex.flexRowBetween, flex.paddingHor16, flex.paddingVer12)}">${item.title}</summary>
+                    <summary class="${cx(styles.summary, flex.flexRowBetween, flex.paddingHor16, flex.paddingVer12, flex.fontXL)}">${item.title}</summary>
                     <p class="${cx(styles.content, flex.paddingVer16, flex.paddingHor16)}">${item.content}</p>
                 </details>
             `

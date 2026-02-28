@@ -41,7 +41,10 @@ export const CalculatorStudentVanillaExample = () => {
     if (!rootRef.current) return
     calculatorRef.current = new StudentVanillaCalculator({ root: rootRef.current })
     if (calculatorRef.current.render) calculatorRef.current.render()
-    return () => { calculatorRef.current?.destroy?.(); calculatorRef.current = null }
+    return () => {
+      calculatorRef.current?.destroy?.()
+      calculatorRef.current = null
+    }
   }, [])
 
   return <section ref={rootRef} />

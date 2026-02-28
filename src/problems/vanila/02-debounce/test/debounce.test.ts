@@ -13,7 +13,7 @@ implementations.forEach(({ name, fn }) => {
   describe(`${name} Solution`, () => {
     describe('debounce', () => {
       it('should return a function', () => {
-        const debounced = debounce(() => { }, 100)
+        const debounced = debounce(() => {}, 100)
         expect(typeof debounced).toBe('function')
       })
 

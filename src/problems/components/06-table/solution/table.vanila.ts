@@ -56,9 +56,12 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
     if (this.currentPage >= this.config.datasource.pages - 1) return
     this.currentPage++
 
-    const nextPage = this.currentPage;
+    const nextPage = this.currentPage
 
-    if (this.data.length <= nextPage * this.config.datasource.pageSize && this.data.length < this.config.datasource.pages * this.config.datasource.pageSize) {
+    if (
+      this.data.length <= nextPage * this.config.datasource.pageSize &&
+      this.data.length < this.config.datasource.pages * this.config.datasource.pageSize
+    ) {
       const newData = await this.config.datasource.next(nextPage, this.config.datasource.pageSize)
       this.data = [...this.data, ...newData]
     }
@@ -87,12 +90,17 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
       if (!this.query) return d
       return this.config.search
         ? this.config.search(this.query, d)
-        : d.filter((item) => Object.values(item).some(v => String(v).toLowerCase().includes(this.query.toLowerCase())))
+        : d.filter((item) =>
+            Object.values(item).some((v) =>
+              String(v).toLowerCase().includes(this.query.toLowerCase()),
+            ),
+          )
     }
 
     const sortFn = (d: T[]) => {
       const sortedColumn = this.config.columns.find((c) => c.id === this.sort?.columnId)
-      if (!sortedColumn || !this.sort || !this.config.comparator || this.sort.direction === 'none') return d
+      if (!sortedColumn || !this.sort || !this.config.comparator || this.sort.direction === 'none')
+        return d
       return [...d].sort(this.config.comparator(sortedColumn.id as keyof T, this.sort.direction))
     }
 
@@ -113,8 +121,10 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
       const columnId = th.dataset.columnId as keyof T
       const column = this.config.columns.find((c) => c.id === columnId)
       if (column) {
-        const currentDirection = this.sort?.columnId === columnId ? this.sort.direction : (column.sort ?? 'none')
-        const newDirection = currentDirection === 'desc' ? 'none' : currentDirection === 'asc' ? 'desc' : 'asc'
+        const currentDirection =
+          this.sort?.columnId === columnId ? this.sort.direction : (column.sort ?? 'none')
+        const newDirection =
+          currentDirection === 'desc' ? 'none' : currentDirection === 'asc' ? 'desc' : 'asc'
         this.setSort(columnId, newDirection)
       }
       return
@@ -152,12 +162,12 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
         (item) => `
             <tr>
                 ${columns
-            .map(
-              (col) => `
+                  .map(
+                    (col) => `
                     <td class="${cx(flex.padding8)}">${col.renderer(item)}</td>
                 `,
-            )
-            .join('')}
+                  )
+                  .join('')}
             </tr>
         `,
       )
@@ -180,7 +190,8 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
       const columnId = th.dataset.columnId
       const column = this.config.columns.find((c) => c.id === columnId)
       if (column) {
-        const currentSort = (this.sort && this.sort.columnId === columnId) ? this.sort.direction : column.sort
+        const currentSort =
+          this.sort && this.sort.columnId === columnId ? this.sort.direction : column.sort
         th.textContent = `${column.name}${currentSort === 'asc' ? ' ↑' : currentSort === 'desc' ? ' ↓' : ''}`
       }
     })
@@ -208,14 +219,14 @@ export class Table<T extends { id: string }> extends AbstractComponent<TTablePro
                 <thead>
                     <tr>
                         ${columns
-        .map(
-          (c) => `
+                          .map(
+                            (c) => `
                             <th data-column-id="${c.id}" class="${cx(flex.padding8)}" style="cursor: pointer;">
                                 ${c.name}${c.sort === 'asc' ? ' ↑' : c.sort === 'desc' ? ' ↓' : ''}
                             </th>
                         `,
-        )
-        .join('')}
+                          )
+                          .join('')}
                     </tr>
                 </thead>
                 <tbody>

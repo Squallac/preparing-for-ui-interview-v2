@@ -2,601 +2,601 @@
   {
     "id": "1",
     "query": "React",
-    "value": "React — react"
+    "value": "React - 1"
   },
   {
     "id": "2",
     "query": "React Hooks",
-    "value": "React Hooks — react"
+    "value": "React Hooks - 2"
   },
   {
     "id": "3",
     "query": "React Router",
-    "value": "React Router — react"
+    "value": "React Router - 3"
   },
   {
     "id": "4",
     "query": "React Redux",
-    "value": "React Redux — react"
+    "value": "React Redux - 4"
   },
   {
     "id": "5",
     "query": "React Context",
-    "value": "React Context — react"
+    "value": "React Context - 5"
   },
   {
     "id": "6",
     "query": "React Suspense",
-    "value": "React Suspense — react"
+    "value": "React Suspense - 6"
   },
   {
     "id": "7",
     "query": "React Server Components",
-    "value": "React Server Components — react"
+    "value": "React Server Components - 7"
   },
   {
     "id": "8",
     "query": "React Native",
-    "value": "React Native — react"
+    "value": "React Native - 8"
   },
   {
     "id": "9",
     "query": "React Testing Library",
-    "value": "React Testing Library — react"
+    "value": "React Testing Library - 9"
   },
   {
     "id": "10",
     "query": "React Query",
-    "value": "React Query — react"
+    "value": "React Query - 10"
   },
   {
     "id": "11",
     "query": "React Hook Form",
-    "value": "React Hook Form — react"
+    "value": "React Hook Form - 11"
   },
   {
     "id": "12",
     "query": "React Spring",
-    "value": "React Spring — react"
+    "value": "React Spring - 12"
   },
   {
     "id": "13",
     "query": "React Fiber",
-    "value": "React Fiber — react"
+    "value": "React Fiber - 13"
   },
   {
     "id": "14",
     "query": "React Concurrent Mode",
-    "value": "React Concurrent Mode — react"
+    "value": "React Concurrent Mode - 14"
   },
   {
     "id": "15",
     "query": "React Portals",
-    "value": "React Portals — react"
+    "value": "React Portals - 15"
   },
   {
     "id": "16",
     "query": "JavaScript",
-    "value": "JavaScript — javascript"
+    "value": "JavaScript - 16"
   },
   {
     "id": "17",
     "query": "JavaScript Promises",
-    "value": "JavaScript Promises — javascript"
+    "value": "JavaScript Promises - 17"
   },
   {
     "id": "18",
     "query": "JavaScript Async Await",
-    "value": "JavaScript Async Await — javascript"
+    "value": "JavaScript Async Await - 18"
   },
   {
     "id": "19",
     "query": "JavaScript Closures",
-    "value": "JavaScript Closures — javascript"
+    "value": "JavaScript Closures - 19"
   },
   {
     "id": "20",
     "query": "JavaScript Prototypes",
-    "value": "JavaScript Prototypes — javascript"
+    "value": "JavaScript Prototypes - 20"
   },
   {
     "id": "21",
     "query": "JavaScript Event Loop",
-    "value": "JavaScript Event Loop — javascript"
+    "value": "JavaScript Event Loop - 21"
   },
   {
     "id": "22",
     "query": "JavaScript Modules",
-    "value": "JavaScript Modules — javascript"
+    "value": "JavaScript Modules - 22"
   },
   {
     "id": "23",
     "query": "JavaScript Proxy",
-    "value": "JavaScript Proxy — javascript"
+    "value": "JavaScript Proxy - 23"
   },
   {
     "id": "24",
     "query": "JavaScript Generators",
-    "value": "JavaScript Generators — javascript"
+    "value": "JavaScript Generators - 24"
   },
   {
     "id": "25",
     "query": "JavaScript Iterators",
-    "value": "JavaScript Iterators — javascript"
+    "value": "JavaScript Iterators - 25"
   },
   {
     "id": "26",
     "query": "JavaScript WeakMap",
-    "value": "JavaScript WeakMap — javascript"
+    "value": "JavaScript WeakMap - 26"
   },
   {
     "id": "27",
     "query": "JavaScript WeakRef",
-    "value": "JavaScript WeakRef — javascript"
+    "value": "JavaScript WeakRef - 27"
   },
   {
     "id": "28",
     "query": "JavaScript Symbol",
-    "value": "JavaScript Symbol — javascript"
+    "value": "JavaScript Symbol - 28"
   },
   {
     "id": "29",
     "query": "JavaScript BigInt",
-    "value": "JavaScript BigInt — javascript"
+    "value": "JavaScript BigInt - 29"
   },
   {
     "id": "30",
     "query": "JavaScript Intl",
-    "value": "JavaScript Intl — javascript"
+    "value": "JavaScript Intl - 30"
   },
   {
     "id": "31",
     "query": "TypeScript",
-    "value": "TypeScript — typescript"
+    "value": "TypeScript - 31"
   },
   {
     "id": "32",
     "query": "TypeScript Generics",
-    "value": "TypeScript Generics — typescript"
+    "value": "TypeScript Generics - 32"
   },
   {
     "id": "33",
     "query": "TypeScript Utility Types",
-    "value": "TypeScript Utility Types — typescript"
+    "value": "TypeScript Utility Types - 33"
   },
   {
     "id": "34",
     "query": "TypeScript Mapped Types",
-    "value": "TypeScript Mapped Types — typescript"
+    "value": "TypeScript Mapped Types - 34"
   },
   {
     "id": "35",
     "query": "TypeScript Conditional Types",
-    "value": "TypeScript Conditional Types — typescript"
+    "value": "TypeScript Conditional Types - 35"
   },
   {
     "id": "36",
     "query": "TypeScript Infer",
-    "value": "TypeScript Infer — typescript"
+    "value": "TypeScript Infer - 36"
   },
   {
     "id": "37",
     "query": "TypeScript Decorators",
-    "value": "TypeScript Decorators — typescript"
+    "value": "TypeScript Decorators - 37"
   },
   {
     "id": "38",
     "query": "TypeScript Enums",
-    "value": "TypeScript Enums — typescript"
+    "value": "TypeScript Enums - 38"
   },
   {
     "id": "39",
     "query": "TypeScript Interfaces",
-    "value": "TypeScript Interfaces — typescript"
+    "value": "TypeScript Interfaces - 39"
   },
   {
     "id": "40",
     "query": "TypeScript Type Guards",
-    "value": "TypeScript Type Guards — typescript"
+    "value": "TypeScript Type Guards - 40"
   },
   {
     "id": "41",
     "query": "TypeScript Template Literals",
-    "value": "TypeScript Template Literals — typescript"
+    "value": "TypeScript Template Literals - 41"
   },
   {
     "id": "42",
     "query": "TypeScript Discriminated Unions",
-    "value": "TypeScript Discriminated Unions — typescript"
+    "value": "TypeScript Discriminated Unions - 42"
   },
   {
     "id": "43",
     "query": "TypeScript Satisfies",
-    "value": "TypeScript Satisfies — typescript"
+    "value": "TypeScript Satisfies - 43"
   },
   {
     "id": "44",
     "query": "TypeScript Const Assertions",
-    "value": "TypeScript Const Assertions — typescript"
+    "value": "TypeScript Const Assertions - 44"
   },
   {
     "id": "45",
     "query": "TypeScript Module Resolution",
-    "value": "TypeScript Module Resolution — typescript"
+    "value": "TypeScript Module Resolution - 45"
   },
   {
     "id": "46",
     "query": "CSS Grid",
-    "value": "CSS Grid — css"
+    "value": "CSS Grid - 46"
   },
   {
     "id": "47",
     "query": "CSS Flexbox",
-    "value": "CSS Flexbox — css"
+    "value": "CSS Flexbox - 47"
   },
   {
     "id": "48",
     "query": "CSS Variables",
-    "value": "CSS Variables — css"
+    "value": "CSS Variables - 48"
   },
   {
     "id": "49",
     "query": "CSS Animations",
-    "value": "CSS Animations — css"
+    "value": "CSS Animations - 49"
   },
   {
     "id": "50",
     "query": "CSS Transitions",
-    "value": "CSS Transitions — css"
+    "value": "CSS Transitions - 50"
   },
   {
     "id": "51",
     "query": "CSS Transforms",
-    "value": "CSS Transforms — css"
+    "value": "CSS Transforms - 51"
   },
   {
     "id": "52",
     "query": "CSS Media Queries",
-    "value": "CSS Media Queries — css"
+    "value": "CSS Media Queries - 52"
   },
   {
     "id": "53",
     "query": "CSS Container Queries",
-    "value": "CSS Container Queries — css"
+    "value": "CSS Container Queries - 53"
   },
   {
     "id": "54",
     "query": "CSS Cascade Layers",
-    "value": "CSS Cascade Layers — css"
+    "value": "CSS Cascade Layers - 54"
   },
   {
     "id": "55",
     "query": "CSS Subgrid",
-    "value": "CSS Subgrid — css"
+    "value": "CSS Subgrid - 55"
   },
   {
     "id": "56",
     "query": "CSS Nesting",
-    "value": "CSS Nesting — css"
+    "value": "CSS Nesting - 56"
   },
   {
     "id": "57",
     "query": "CSS Scroll Snap",
-    "value": "CSS Scroll Snap — css"
+    "value": "CSS Scroll Snap - 57"
   },
   {
     "id": "58",
     "query": "CSS Clamp",
-    "value": "CSS Clamp — css"
+    "value": "CSS Clamp - 58"
   },
   {
     "id": "59",
     "query": "CSS Has Selector",
-    "value": "CSS Has Selector — css"
+    "value": "CSS Has Selector - 59"
   },
   {
     "id": "60",
     "query": "CSS Color Mix",
-    "value": "CSS Color Mix — css"
+    "value": "CSS Color Mix - 60"
   },
   {
     "id": "61",
     "query": "Node.js",
-    "value": "Node.js — node"
+    "value": "Node.js - 61"
   },
   {
     "id": "62",
     "query": "Node.js Streams",
-    "value": "Node.js Streams — node"
+    "value": "Node.js Streams - 62"
   },
   {
     "id": "63",
     "query": "Node.js Cluster",
-    "value": "Node.js Cluster — node"
+    "value": "Node.js Cluster - 63"
   },
   {
     "id": "64",
     "query": "Node.js Worker Threads",
-    "value": "Node.js Worker Threads — node"
+    "value": "Node.js Worker Threads - 64"
   },
   {
     "id": "65",
     "query": "Node.js File System",
-    "value": "Node.js File System — node"
+    "value": "Node.js File System - 65"
   },
   {
     "id": "66",
     "query": "Node.js HTTP",
-    "value": "Node.js HTTP — node"
+    "value": "Node.js HTTP - 66"
   },
   {
     "id": "67",
     "query": "Node.js Events",
-    "value": "Node.js Events — node"
+    "value": "Node.js Events - 67"
   },
   {
     "id": "68",
     "query": "Node.js Buffer",
-    "value": "Node.js Buffer — node"
+    "value": "Node.js Buffer - 68"
   },
   {
     "id": "69",
     "query": "Node.js Child Process",
-    "value": "Node.js Child Process — node"
+    "value": "Node.js Child Process - 69"
   },
   {
     "id": "70",
     "query": "Node.js Crypto",
-    "value": "Node.js Crypto — node"
+    "value": "Node.js Crypto - 70"
   },
   {
     "id": "71",
     "query": "Web Components",
-    "value": "Web Components — web"
+    "value": "Web Components - 71"
   },
   {
     "id": "72",
     "query": "Web Workers",
-    "value": "Web Workers — web"
+    "value": "Web Workers - 72"
   },
   {
     "id": "73",
     "query": "Web Sockets",
-    "value": "Web Sockets — web"
+    "value": "Web Sockets - 73"
   },
   {
     "id": "74",
     "query": "Web Assembly",
-    "value": "Web Assembly — web"
+    "value": "Web Assembly - 74"
   },
   {
     "id": "75",
     "query": "Web Storage",
-    "value": "Web Storage — web"
+    "value": "Web Storage - 75"
   },
   {
     "id": "76",
     "query": "Web Animations API",
-    "value": "Web Animations API — web"
+    "value": "Web Animations API - 76"
   },
   {
     "id": "77",
     "query": "Web Audio API",
-    "value": "Web Audio API — web"
+    "value": "Web Audio API - 77"
   },
   {
     "id": "78",
     "query": "Web Bluetooth",
-    "value": "Web Bluetooth — web"
+    "value": "Web Bluetooth - 78"
   },
   {
     "id": "79",
     "query": "Web RTC",
-    "value": "Web RTC — web"
+    "value": "Web RTC - 79"
   },
   {
     "id": "80",
     "query": "Web Vitals",
-    "value": "Web Vitals — web"
+    "value": "Web Vitals - 80"
   },
   {
     "id": "81",
     "query": "Data Structures",
-    "value": "Data Structures — data"
+    "value": "Data Structures - 81"
   },
   {
     "id": "82",
     "query": "Data Structures Array",
-    "value": "Data Structures Array — data"
+    "value": "Data Structures Array - 82"
   },
   {
     "id": "83",
     "query": "Data Structures Linked List",
-    "value": "Data Structures Linked List — data"
+    "value": "Data Structures Linked List - 83"
   },
   {
     "id": "84",
     "query": "Data Structures Stack",
-    "value": "Data Structures Stack — data"
+    "value": "Data Structures Stack - 84"
   },
   {
     "id": "85",
     "query": "Data Structures Queue",
-    "value": "Data Structures Queue — data"
+    "value": "Data Structures Queue - 85"
   },
   {
     "id": "86",
     "query": "Data Structures Tree",
-    "value": "Data Structures Tree — data"
+    "value": "Data Structures Tree - 86"
   },
   {
     "id": "87",
     "query": "Data Structures Trie",
-    "value": "Data Structures Trie — data"
+    "value": "Data Structures Trie - 87"
   },
   {
     "id": "88",
     "query": "Data Structures Graph",
-    "value": "Data Structures Graph — data"
+    "value": "Data Structures Graph - 88"
   },
   {
     "id": "89",
     "query": "Data Structures Heap",
-    "value": "Data Structures Heap — data"
+    "value": "Data Structures Heap - 89"
   },
   {
     "id": "90",
     "query": "Data Structures Hash Map",
-    "value": "Data Structures Hash Map — data"
+    "value": "Data Structures Hash Map - 90"
   },
   {
     "id": "91",
     "query": "Design Patterns",
-    "value": "Design Patterns — design"
+    "value": "Design Patterns - 91"
   },
   {
     "id": "92",
     "query": "Design Patterns Observer",
-    "value": "Design Patterns Observer — design"
+    "value": "Design Patterns Observer - 92"
   },
   {
     "id": "93",
     "query": "Design Patterns Singleton",
-    "value": "Design Patterns Singleton — design"
+    "value": "Design Patterns Singleton - 93"
   },
   {
     "id": "94",
     "query": "Design Patterns Factory",
-    "value": "Design Patterns Factory — design"
+    "value": "Design Patterns Factory - 94"
   },
   {
     "id": "95",
     "query": "Design Patterns Strategy",
-    "value": "Design Patterns Strategy — design"
+    "value": "Design Patterns Strategy - 95"
   },
   {
     "id": "96",
     "query": "Design Patterns Decorator",
-    "value": "Design Patterns Decorator — design"
+    "value": "Design Patterns Decorator - 96"
   },
   {
     "id": "97",
     "query": "Design Patterns Adapter",
-    "value": "Design Patterns Adapter — design"
+    "value": "Design Patterns Adapter - 97"
   },
   {
     "id": "98",
     "query": "Design Patterns Proxy",
-    "value": "Design Patterns Proxy — design"
+    "value": "Design Patterns Proxy - 98"
   },
   {
     "id": "99",
     "query": "Design Patterns Command",
-    "value": "Design Patterns Command — design"
+    "value": "Design Patterns Command - 99"
   },
   {
     "id": "100",
     "query": "Design Patterns Iterator",
-    "value": "Design Patterns Iterator — design"
+    "value": "Design Patterns Iterator - 100"
   },
   {
     "id": "101",
     "query": "Testing",
-    "value": "Testing — testing"
+    "value": "Testing - 101"
   },
   {
     "id": "102",
     "query": "Testing Unit Tests",
-    "value": "Testing Unit Tests — testing"
+    "value": "Testing Unit Tests - 102"
   },
   {
     "id": "103",
     "query": "Testing Integration Tests",
-    "value": "Testing Integration Tests — testing"
+    "value": "Testing Integration Tests - 103"
   },
   {
     "id": "104",
     "query": "Testing E2E Tests",
-    "value": "Testing E2E Tests — testing"
+    "value": "Testing E2E Tests - 104"
   },
   {
     "id": "105",
     "query": "Testing Mocking",
-    "value": "Testing Mocking — testing"
+    "value": "Testing Mocking - 105"
   },
   {
     "id": "106",
     "query": "Testing Snapshot",
-    "value": "Testing Snapshot — testing"
+    "value": "Testing Snapshot - 106"
   },
   {
     "id": "107",
     "query": "Testing Coverage",
-    "value": "Testing Coverage — testing"
+    "value": "Testing Coverage - 107"
   },
   {
     "id": "108",
     "query": "Testing TDD",
-    "value": "Testing TDD — testing"
+    "value": "Testing TDD - 108"
   },
   {
     "id": "109",
     "query": "Testing BDD",
-    "value": "Testing BDD — testing"
+    "value": "Testing BDD - 109"
   },
   {
     "id": "110",
     "query": "Testing Performance",
-    "value": "Testing Performance — testing"
+    "value": "Testing Performance - 110"
   },
   {
     "id": "111",
     "query": "Performance",
-    "value": "Performance — performance"
+    "value": "Performance - 111"
   },
   {
     "id": "112",
     "query": "Performance Lazy Loading",
-    "value": "Performance Lazy Loading — performance"
+    "value": "Performance Lazy Loading - 112"
   },
   {
     "id": "113",
     "query": "Performance Code Splitting",
-    "value": "Performance Code Splitting — performance"
+    "value": "Performance Code Splitting - 113"
   },
   {
     "id": "114",
     "query": "Performance Tree Shaking",
-    "value": "Performance Tree Shaking — performance"
+    "value": "Performance Tree Shaking - 114"
   },
   {
     "id": "115",
     "query": "Performance Memoization",
-    "value": "Performance Memoization — performance"
+    "value": "Performance Memoization - 115"
   },
   {
     "id": "116",
     "query": "Performance Virtualization",
-    "value": "Performance Virtualization — performance"
+    "value": "Performance Virtualization - 116"
   },
   {
     "id": "117",
     "query": "Performance Debouncing",
-    "value": "Performance Debouncing — performance"
+    "value": "Performance Debouncing - 117"
   },
   {
     "id": "118",
     "query": "Performance Throttling",
-    "value": "Performance Throttling — performance"
+    "value": "Performance Throttling - 118"
   },
   {
     "id": "119",
     "query": "Performance Web Workers",
-    "value": "Performance Web Workers — performance"
+    "value": "Performance Web Workers - 119"
   },
   {
     "id": "120",
     "query": "Performance Caching",
-    "value": "Performance Caching — performance"
+    "value": "Performance Caching - 120"
   }
 ]

@@ -40,13 +40,13 @@ export class Calculator extends AbstractComponent<{}> {
       const buttons = this.container?.querySelectorAll(`.${css.button}`)
       buttons?.forEach((btn) => {
         if ((btn as HTMLElement).dataset.label !== 'AC') {
-          ; (btn as HTMLButtonElement).disabled = true
+          ;(btn as HTMLButtonElement).disabled = true
         }
       })
     } else {
       const buttons = this.container?.querySelectorAll(`.${css.button}:disabled`)
       buttons?.forEach((btn) => {
-        ; (btn as HTMLButtonElement).disabled = false
+        ;(btn as HTMLButtonElement).disabled = false
       })
     }
   }
@@ -57,8 +57,8 @@ export class Calculator extends AbstractComponent<{}> {
                 <output class="${cx(flex.w100, flex.cWhite10, css.output)}">${this.state.value}</output>
                 <section class="${cx(css.keypad, flex.w100)}">
                     ${Array.from(BUTTONS.values())
-        .map(
-          (btn) => `
+                      .map(
+                        (btn) => `
                         <button 
                             class="${cx(flex.bNone, flex.cWhite10, flex.br128, css.button)}" 
                             data-label="${btn.label}"
@@ -67,8 +67,8 @@ export class Calculator extends AbstractComponent<{}> {
                             ${btn.label}
                         </button>
                     `,
-        )
-        .join('')}
+                      )
+                      .join('')}
                 </section>
             </div>
         `

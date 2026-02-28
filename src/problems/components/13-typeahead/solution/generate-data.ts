@@ -145,12 +145,12 @@ const generateData = () => {
   const data: { id: string; query: string; value: string }[] = []
   let id = 1
 
-  for (const [category, items] of Object.entries(CATEGORIES)) {
+  for (const [, items] of Object.entries(CATEGORIES)) {
     for (const item of items) {
       data.push({
-        id: String(id++),
+        id: String(id),
         query: item,
-        value: `${item} — ${category}`,
+        value: `${item} - ${id++}`,
       })
     }
   }

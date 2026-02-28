@@ -112,7 +112,6 @@ export class Typeahead extends AbstractComponent<TTypeaheadProps> {
     }
   }
 
-
   // Step 6: Rendering
   toHTML() {
     return `

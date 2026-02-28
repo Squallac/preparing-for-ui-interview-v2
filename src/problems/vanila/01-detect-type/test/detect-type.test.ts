@@ -66,14 +66,14 @@ implementations.forEach(({ name, fn }) => {
         })
 
         it('should return "function" for functions', () => {
-          expect(detectType(() => { })).toBe('function')
-          expect(detectType(function () { })).toBe('function')
-          expect(detectType(function named() { })).toBe('function')
+          expect(detectType(() => {})).toBe('function')
+          expect(detectType(function () {})).toBe('function')
+          expect(detectType(function named() {})).toBe('function')
         })
 
         it('should return "asyncfunction" for async functions', () => {
-          expect(detectType(async () => { })).toBe('asyncfunction')
-          expect(detectType(async function () { })).toBe('asyncfunction')
+          expect(detectType(async () => {})).toBe('asyncfunction')
+          expect(detectType(async function () {})).toBe('asyncfunction')
         })
       })
 
@@ -105,7 +105,7 @@ implementations.forEach(({ name, fn }) => {
 
         it('should return "promise" for Promise', () => {
           expect(detectType(Promise.resolve())).toBe('promise')
-          expect(detectType(new Promise(() => { }))).toBe('promise')
+          expect(detectType(new Promise(() => {}))).toBe('promise')
         })
 
         it('should return "error" for Error', () => {

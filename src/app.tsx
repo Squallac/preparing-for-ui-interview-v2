@@ -40,24 +40,31 @@ import {
 } from './problems/components/06-table/table.example'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { MarkdownExample, MarkdownStudentExample } from './problems/components/18-markdown/markdown.example'
+import {
+  MarkdownExample,
+  MarkdownStudentExample,
+} from './problems/components/17-markdown/markdown.example'
 import {
   ProgressBarExample,
   ProgressBarVanillaExample,
   ProgressBarStudentExample,
   ProgressBarStudentVanillaExample,
-} from './problems/components/15-progress-bar/progress-bar.example'
+} from './problems/components/14-progress-bar/progress-bar.example'
 import {
   SquareGameExample,
   SquareGameVanillaExample,
   SquareGameStudentExample,
 } from './problems/components/12-square-game/square-game.example'
-import { UploadComponentExample, UploadComponentStudentExample } from './problems/components/16-upload-component/upload-component.example'
+import { UseFileUploadExample } from './problems/components/15.1-use-file-upload/use-file-upload.example'
+import {
+  UploadComponentExample,
+  UploadComponentStudentExample,
+} from './problems/components/15.2-upload-component/upload-component.example'
 import {
   InfiniteCanvasExample,
   InfiniteCanvasStudentExample,
   // InfiniteCanvasStudentVanillaExample - Not implemented
-} from './problems/components/20-infinite-canvas/infinite-canvas.example'
+} from './problems/components/19-infinite-canvas/infinite-canvas.example'
 import {
   GalleryExample,
   GalleryVanillaExample,
@@ -69,7 +76,7 @@ import {
   GPTChatVanillaExample,
   GptChatStudentExample,
   GptChatStudentVanillaExample,
-} from './problems/components/19-gpt-chat/gpt-chat.example'
+} from './problems/components/18-gpt-chat/gpt-chat.example'
 
 import {
   RedditThreadExample,
@@ -93,22 +100,26 @@ import {
   TypeaheadVanillaExample,
   TypeaheadStudentExample,
 } from './problems/components/13-typeahead/typeahead.example'
-import { DialogExample, DialogVanillaExample, DialogStudentExample } from './problems/components/04-dialog/dialog.example'
+import {
+  DialogExample,
+  DialogVanillaExample,
+  DialogStudentExample,
+} from './problems/components/04-dialog/dialog.example'
 import {
   PortfolioVisualizerExample,
   PortfolioVisualizerVanillaExample,
   PortfolioVisualizerStudentExample,
   PortfolioVisualizerStudentVanillaExample,
-} from './problems/components/17-portfolio-visualizer/portfolio-visualizer.example'
+} from './problems/components/16-portfolio-visualizer/portfolio-visualizer.example'
 import {
   GoogleSheetExample,
   GoogleSheetVanillaExample,
   GoogleSheetStudentExample,
   GoogleSheetStudentVanillaExample,
-} from './problems/components/21.4-google-sheet-ux/google-sheet.example'
-import { ParserExample } from './problems/components/21.1-google-sheet-parser/parser.example'
-import { TopoExample } from './problems/components/21.2-google-sheet-topo/topo.example'
-import { TableEngineExample } from './problems/components/21.3-google-sheet-engine/table-engine.example'
+} from './problems/components/20.4-google-sheet-ux/google-sheet.example'
+import { ParserExample } from './problems/components/20.1-google-sheet-parser/parser.example'
+import { TopoExample } from './problems/components/20.2-google-sheet-topo/topo.example'
+import { TableEngineExample } from './problems/components/20.3-google-sheet-engine/table-engine.example'
 
 // Import problem markdown files (Bun text imports)
 import toastProblem from './problems/components/10-toast/problem.md' with { type: 'text' }
@@ -118,18 +129,19 @@ import tabsProblem from './problems/components/03-tabs/problem.md' with { type: 
 import tooltipProblem from './problems/components/05-tooltip/problem.md' with { type: 'text' }
 import dialogProblem from './problems/components/04-dialog/problem.md' with { type: 'text' }
 import tableProblem from './problems/components/06-table/problem.md' with { type: 'text' }
-import markdownProblem from './problems/components/18-markdown/problem.md' with { type: 'text' }
+import markdownProblem from './problems/components/17-markdown/problem.md' with { type: 'text' }
 import squareGameProblem from './problems/components/12-square-game/problem.md' with { type: 'text' }
-import progressBarProblem from './problems/components/15-progress-bar/problem.md' with { type: 'text' }
-import uploadComponentProblem from './problems/components/16-upload-component/problem.md' with { type: 'text' }
-import portfolioVisualizerProblem from './problems/components/17-portfolio-visualizer/problem.md' with { type: 'text' }
-import googleSheetProblem from './problems/components/21.4-google-sheet-ux/problem.md' with { type: 'text' }
-import parserProblem from './problems/components/21.1-google-sheet-parser/problem.md' with { type: 'text' }
-import topoProblem from './problems/components/21.2-google-sheet-topo/problem.md' with { type: 'text' }
-import tableEngineProblem from './problems/components/21.3-google-sheet-engine/problem.md' with { type: 'text' }
-import infiniteCanvasProblem from './problems/components/20-infinite-canvas/problem.md' with { type: 'text' }
+import progressBarProblem from './problems/components/14-progress-bar/problem.md' with { type: 'text' }
+import uploadComponentProblem from './problems/components/15.2-upload-component/problem.md' with { type: 'text' }
+import useFileUploadProblem from './problems/components/15.1-use-file-upload/problem.md' with { type: 'text' }
+import portfolioVisualizerProblem from './problems/components/16-portfolio-visualizer/problem.md' with { type: 'text' }
+import googleSheetProblem from './problems/components/20.4-google-sheet-ux/problem.md' with { type: 'text' }
+import parserProblem from './problems/components/20.1-google-sheet-parser/problem.md' with { type: 'text' }
+import topoProblem from './problems/components/20.2-google-sheet-topo/problem.md' with { type: 'text' }
+import tableEngineProblem from './problems/components/20.3-google-sheet-engine/problem.md' with { type: 'text' }
+import infiniteCanvasProblem from './problems/components/19-infinite-canvas/problem.md' with { type: 'text' }
 import galleryProblem from './problems/components/08-gallery/problem.md' with { type: 'text' }
-import gptChatProblem from './problems/components/19-gpt-chat/problem.md' with { type: 'text' }
+import gptChatProblem from './problems/components/18-gpt-chat/problem.md' with { type: 'text' }
 
 import redditThreadProblem from './problems/components/07-reddit-thread/problem.md' with { type: 'text' }
 import starRatingProblem from './problems/components/02-star-rating/problem.md' with { type: 'text' }
@@ -565,6 +577,15 @@ const SECTIONS = {
           studentVanilla: { component: ProgressBarStudentVanillaExample },
         },
       },
+      useFileUpload: {
+        id: '15.1',
+        name: 'Use File Upload Hook',
+        difficulty: 'medium',
+        variants: {
+          overview: { component: createProblemOverview(useFileUploadProblem) },
+          react: { component: UseFileUploadExample },
+        },
+      },
       uploadComponent: {
         id: 'uploadComponent',
         name: 'Upload Component',
@@ -620,8 +641,8 @@ const SECTIONS = {
         },
       },
       googleSheetParser: {
-        id: '21.1',
-        name: '21.1 Google Sheet Parser',
+        id: '20.1',
+        name: '20.1 Google Sheet Parser',
         difficulty: 'extreme',
         variants: {
           overview: { component: createProblemOverview(parserProblem) },
@@ -629,8 +650,8 @@ const SECTIONS = {
         },
       },
       googleSheetTopo: {
-        id: '21.2',
-        name: '21.2 Google Sheet Topo Sort',
+        id: '20.2',
+        name: '20.2 Google Sheet Topo Sort',
         difficulty: 'extreme',
         variants: {
           overview: { component: createProblemOverview(topoProblem) },
@@ -638,8 +659,8 @@ const SECTIONS = {
         },
       },
       googleSheetEngine: {
-        id: '21.3',
-        name: '21.3 Google Sheet Engine',
+        id: '20.3',
+        name: '20.3 Google Sheet Engine',
         difficulty: 'extreme',
         variants: {
           overview: { component: createProblemOverview(tableEngineProblem) },
@@ -647,8 +668,8 @@ const SECTIONS = {
         },
       },
       googleSheetUx: {
-        id: '21.4',
-        name: '21.4 Google Sheet UX',
+        id: '20.4',
+        name: '20.4 Google Sheet UX',
         difficulty: 'extreme',
         variants: {
           overview: { component: createProblemOverview(googleSheetProblem) },

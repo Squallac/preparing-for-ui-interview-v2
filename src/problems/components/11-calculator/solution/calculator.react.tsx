@@ -19,14 +19,24 @@ export const Calculator = () => {
   }
 
   return (
-    <div className={cx(styles.flexColumnCenter, styles.bgBlack10, styles.w100, css.calculator)}>
-      <output className={cx(css.output, styles.w100, styles.cWhite10)}>{state}</output>
-      <section className={cx(css.keypad, styles.w100)} onClick={handleButtonClick}>
+    <div
+      className={cx(
+        styles.flexColumnCenter,
+        styles.bgBlack10,
+        styles.w100,
+        styles.maxW500px,
+        css.calculator,
+      )}
+    >
+      <output className={cx(css.output, styles.w100, styles.cWhite10, styles.fontXL)}>
+        {state}
+      </output>
+      <section className={cx(css.keypad, styles.w100, styles.fontXL)} onClick={handleButtonClick}>
         {Array.from(BUTTONS.values()).map((button) => (
           <button
             disabled={state === INVALID_VALUE && button.label !== 'AC'}
             key={button.label}
-            className={cx(css.button, styles.bNone, styles.cWhite10, styles.br128)}
+            className={cx(css.button, styles.bNone, styles.cWhite10, styles.br128, styles.fontXL)}
             data-label={button.label}
           >
             {button.label}

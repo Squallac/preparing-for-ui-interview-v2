@@ -17,7 +17,7 @@ export class Gallery extends AbstractComponent<TGalleryProps> {
   constructor(config: TComponentConfig<TGalleryProps>) {
     super({
       ...config,
-      className: [styles.container, ...(config.className || [])],
+      className: [styles.container, flex.maxW800px, flex.h600px, ...(config.className || [])],
       listeners: ['click', ...(config.listeners || [])],
     })
     this.handleKeyDown = this.handleKeyDown.bind(this)
@@ -113,13 +113,13 @@ export class Gallery extends AbstractComponent<TGalleryProps> {
     const { images } = this.config
 
     if (images.length === 0) {
-      return `<div class="${styles.empty}">No images to display</div>`
+      return `<div class="${cx(styles.empty, flex.fontX)}">No images to display</div>`
     }
 
     return `
             <button
                 ${this.currentIndex === 0 ? 'disabled' : ''}
-                class="${cx(styles.button, styles.buttonPrev)}"
+                class="${cx(styles.button, styles.buttonPrev, flex.fontXL)}"
                 aria-label="Previous image"
             >
                 &lt;
@@ -145,7 +145,7 @@ export class Gallery extends AbstractComponent<TGalleryProps> {
 
             <button
                 ${this.currentIndex === images.length - 1 ? 'disabled' : ''}
-                class="${cx(styles.button, styles.buttonNext)}"
+                class="${cx(styles.button, styles.buttonNext, flex.fontXL)}"
                 aria-label="Next image"
             >
                 &gt;

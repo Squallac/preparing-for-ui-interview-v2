@@ -11,13 +11,10 @@
 }
 
 .container {
-  height: 600px;
-  max-width: 800px;
   overflow: hidden;
 }
 
 .button {
-  font-size: 24px;
   cursor: pointer;
   font-weight: bold;
   padding: 1rem;
@@ -59,5 +56,4 @@
 /* Empty state */
 .empty {
   color: #999;
-  font-size: 18px;
 }

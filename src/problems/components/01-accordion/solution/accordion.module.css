@@ -1,6 +1,4 @@
-/* Main container for the accordion group */
 .container {
-  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -45,7 +43,6 @@
 /* Custom indicator (plus sign) */
 .summary::after {
   content: '+';
-  font-size: 1.2rem;
   transition: transform 0.2s;
 }
 

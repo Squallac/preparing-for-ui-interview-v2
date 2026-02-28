@@ -177,7 +177,7 @@ implementations.forEach(({ name, fn }) => {
 
       describe('unsupported types', () => {
         it('should return "Unsupported Type" for functions', () => {
-          expect(stringify(() => { })).toBe('"Unsupported Type"')
+          expect(stringify(() => {})).toBe('"Unsupported Type"')
         })
       })
 

@@ -1,12 +1,18 @@
-import React, { useCallback, useDeferredValue, useEffect, useMemo, useState, type ChangeEventHandler } from 'react'
+import React, {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  type ChangeEventHandler,
+} from 'react'
 import styles from './table.module.css'
 import flex from '@course/styles'
 import cx from '@course/cx'
 
-
 export interface TTableDataSource<T> {
-  pageSize: number,
-  pages: number,
+  pageSize: number
+  pages: number
   next: (page: number, pageSize: number) => Promise<T[]>
 }
 export type TTableColumn<T> = {
@@ -19,7 +25,7 @@ export type TTableColumn<T> = {
 type TTableProps<T extends { id: string }> = {
   columns: TTableColumn<T>[]
   datasource: TTableDataSource<T>
-  search?: (query: string, data: T[]) => T[],
+  search?: (query: string, data: T[]) => T[]
   comparator?: (columnId: keyof T, direction: 'asc' | 'desc') => (a: T, b: T) => number
 }
 
@@ -27,52 +33,58 @@ export function Table<T extends { id: string }>({
   search,
   columns,
   datasource,
-  comparator
+  comparator,
 }: TTableProps<T>) {
-
   const [_query, setQuery] = useState('')
-  const query = useDeferredValue(_query);
+  const query = useDeferredValue(_query)
   const [data, setData] = useState<T[]>([])
-  const [currentPage, setCurrentPage] = useState(0);
-  const [sort, setSort] = useState<{ columnId: keyof T, direction: 'asc' | 'desc' | 'none' } | null>(null)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [sort, setSort] = useState<{
+    columnId: keyof T
+    direction: 'asc' | 'desc' | 'none'
+  } | null>(null)
 
   useEffect(() => {
     if (data.length === 0) {
-      datasource.next(0, datasource.pageSize).then(d => setData(d));
+      datasource.next(0, datasource.pageSize).then((d) => setData(d))
     }
-  }, [datasource]);
+  }, [datasource])
 
   const next = useCallback(() => {
-    if (currentPage >= datasource.pages - 1) return;
+    if (currentPage >= datasource.pages - 1) return
 
-    const nextPage = currentPage + 1;
-    setCurrentPage(nextPage);
+    const nextPage = currentPage + 1
+    setCurrentPage(nextPage)
 
-    if (data.length <= nextPage * datasource.pageSize && data.length < datasource.pages * datasource.pageSize) {
-      datasource.next(nextPage, datasource.pageSize).then(d => setData(prev => [...prev, ...d]))
+    if (
+      data.length <= nextPage * datasource.pageSize &&
+      data.length < datasource.pages * datasource.pageSize
+    ) {
+      datasource.next(nextPage, datasource.pageSize).then((d) => setData((prev) => [...prev, ...d]))
     }
   }, [datasource, currentPage, data.length])
 
   const prev = useCallback(() => {
     setCurrentPage((p) => Math.max(p - 1, 0))
-  }, []);
-
+  }, [])
 
   const onSearch: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
-    setQuery(target.value);
-    setCurrentPage(0);
-  };
+    setQuery(target.value)
+    setCurrentPage(0)
+  }
 
   const onSort: React.MouseEventHandler<HTMLTableSectionElement> = ({ target }) => {
     if (!(target instanceof HTMLElement) || !target.dataset.columnId) return
     const columnId = target.dataset.columnId as keyof T
     const column = columns.find((c) => c.id === columnId)
     if (!column) return
-    setSort(prevSort => {
-      const currentDirection = prevSort?.columnId === columnId ? prevSort.direction : (column.sort ?? 'none');
-      const newDirection = currentDirection === 'desc' ? 'none' : currentDirection === 'asc' ? 'desc' : 'asc';
-      return { columnId, direction: newDirection };
-    });
+    setSort((prevSort) => {
+      const currentDirection =
+        prevSort?.columnId === columnId ? prevSort.direction : (column.sort ?? 'none')
+      const newDirection =
+        currentDirection === 'desc' ? 'none' : currentDirection === 'asc' ? 'desc' : 'asc'
+      return { columnId, direction: newDirection }
+    })
   }
 
   const slice = useMemo(() => {
@@ -88,8 +100,8 @@ export function Table<T extends { id: string }>({
     }
 
     const sliceFn = (d: T[]) => {
-      const start = currentPage * datasource.pageSize;
-      const end = (currentPage + 1) * datasource.pageSize;
+      const start = currentPage * datasource.pageSize
+      const end = (currentPage + 1) * datasource.pageSize
       return d.slice(start, end)
     }
 
@@ -102,7 +114,7 @@ export function Table<T extends { id: string }>({
         <thead onClickCapture={onSort}>
           <tr>
             {columns.map((c) => {
-              const currentSort = sort?.columnId === c.id ? sort.direction : c.sort;
+              const currentSort = sort?.columnId === c.id ? sort.direction : c.sort
               return (
                 <th data-column-id={c.id} className={cx(flex.padding8)} key={c.id}>
                   {c.name}

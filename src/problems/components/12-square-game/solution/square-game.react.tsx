@@ -23,8 +23,8 @@ export const SquareGame = ({ initState }: TSquareGameProps = {}) => {
     }
     const [emptyRow, emptyCol] = getEmptyPosition(state)
     if (validate([rowIndex, colIndex], [emptyRow, emptyCol])) {
-      const newState = structuredClone(state);
-      [newState[rowIndex][colIndex], newState[emptyRow][emptyCol]] = [
+      const newState = structuredClone(state)
+      ;[newState[rowIndex][colIndex], newState[emptyRow][emptyCol]] = [
         newState[emptyRow][emptyCol],
         newState[rowIndex][colIndex],
       ]
@@ -43,10 +43,12 @@ export const SquareGame = ({ initState }: TSquareGameProps = {}) => {
                 key={colIndex}
                 className={cx(
                   styles.cell,
+                  flex.wh200px,
                   flex.flexRowCenter,
                   flex.cWhite10,
                   col == null ? styles.cell__empty : styles.cell__filled,
                   col == null ? flex.bgWhite5 : flex.bgBlack10,
+                  flex.fontXL,
                 )}
                 data-row={rowIndex}
                 data-col={colIndex}

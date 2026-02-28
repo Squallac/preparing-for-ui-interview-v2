@@ -156,7 +156,11 @@ export function Typeahead<T>({
         onKeyDown={handleInputKeyDown}
       />
       {showDropdown && (
-        <ul id={`${id}-listbox`} role="listbox" className={cx(styles.list, flex.bgWhite10, flex.shadow4, flex.padding8, flex.br4)}>
+        <ul
+          id={`${id}-listbox`}
+          role="listbox"
+          className={cx(styles.list, flex.bgWhite10, flex.shadow4, flex.padding8, flex.br4)}
+        >
           {items.map((item) => (
             <li
               tabIndex={0}
@@ -176,9 +180,7 @@ export function Typeahead<T>({
             </li>
           )}
           {!isLoading && items.length === 0 && query.length > 0 && (
-            <li className={cx(styles.item, flex.padding4, flex.cBlack4)}>
-              No results found
-            </li>
+            <li className={cx(styles.item, flex.padding4, flex.cBlack4)}>No results found</li>
           )}
         </ul>
       )}

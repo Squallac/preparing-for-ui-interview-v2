@@ -5,8 +5,8 @@ export type TButtonAction = (state: string, operator: string) => string
 
 /** A calculator button definition mapping a label to its action function. */
 export type TCalculatorButton = {
-    label: string
-    action: TButtonAction
+  label: string
+  action: TButtonAction
 }
 
 /** Sentinel value returned when an expression cannot be evaluated. */
@@ -18,7 +18,7 @@ export const INVALID_VALUE = 'Invalid value'
  * @example toFixedWithoutZeros(42, 5)      // '42'
  */
 export const toFixedWithoutZeros = (num: number, precision: number) =>
-    num.toFixed(precision).replace(/\.*0+$/, '')
+  num.toFixed(precision).replace(/\.*0+$/, '')
 
 // TODO: Implement the following action functions:
 
@@ -30,7 +30,7 @@ export const toFixedWithoutZeros = (num: number, precision: number) =>
  * @example applyNumber('3', '.')  // '3.'
  */
 export const applyNumber: TButtonAction = (_state: string, _number: string) => {
-    throw new Error('Not implemented')
+  throw new Error('Not implemented')
 }
 
 /**
@@ -41,7 +41,7 @@ export const applyNumber: TButtonAction = (_state: string, _number: string) => {
  * @example applyOperation('5+', '*') // '5*' (replaces)
  */
 export const applyOperation: TButtonAction = (_state: string, _operator: string) => {
-    throw new Error('Not implemented')
+  throw new Error('Not implemented')
 }
 
 /**
@@ -54,12 +54,12 @@ export const applyOperation: TButtonAction = (_state: string, _operator: string)
  * @example calculate('1/0', '=')   // 'Invalid value'
  */
 export const calculate: TButtonAction = (_state: string, _: string) => {
-    throw new Error('Not implemented')
+  throw new Error('Not implemented')
 }
 
 /** Resets the calculator state back to '0'. */
 export const clear: TButtonAction = (_: string, __: string) => {
-    throw new Error('Not implemented')
+  throw new Error('Not implemented')
 }
 
 /**
@@ -69,7 +69,7 @@ export const clear: TButtonAction = (_: string, __: string) => {
  * @example negate('-(5+3)', '') // '5+3'
  */
 export const negate: TButtonAction = (_state: string) => {
-    throw new Error('Not implemented')
+  throw new Error('Not implemented')
 }
 
 /**

@@ -18,7 +18,7 @@ implementations.forEach(({ name, fn }) => {
         })
 
         it('then() should return a new Promise', () => {
-          const p1 = new MyPromise(() => { })
+          const p1 = new MyPromise(() => {})
           const p2 = p1.then()
           expect(p2).toBeInstanceOf(MyPromise)
           expect(p2).not.toBe(p1)
@@ -29,8 +29,8 @@ implementations.forEach(({ name, fn }) => {
         })
 
         it('catch() should return a new Promise', () => {
-          const p1 = new MyPromise(() => { })
-          const p2 = p1.catch(() => { })
+          const p1 = new MyPromise(() => {})
+          const p2 = p1.catch(() => {})
           expect(p2).toBeInstanceOf(MyPromise)
           expect(p2).not.toBe(p1)
         })
@@ -38,7 +38,7 @@ implementations.forEach(({ name, fn }) => {
 
       describe('constructor', () => {
         it('new MyPromise(() => {})', () => {
-          const p = new MyPromise(() => { })
+          const p = new MyPromise(() => {})
           expect(p).toBeInstanceOf(MyPromise)
         })
       })

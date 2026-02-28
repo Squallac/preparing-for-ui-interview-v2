@@ -1,8 +1,10 @@
 import { AbstractComponent, type TComponentConfig } from '../00-abstract-component/component'
 
 export class Calculator extends AbstractComponent<any> {
-    constructor(config: TComponentConfig<any>) {
-        super(config)
-    }
-    toHTML() { return '<div>TODO: Implement Calculator</div>' }
+  constructor(config: TComponentConfig<any>) {
+    super(config)
+  }
+  toHTML() {
+    return '<div>TODO: Implement Calculator</div>'
+  }
 }

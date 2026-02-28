@@ -1,6 +1,9 @@
 import { useRef, useEffect, useMemo } from 'react'
 import { Table, type TTableColumn, type TTableDataSource } from './solution/table.react'
-import { Table as VanillaTable, type TTableColumn as TVanillaTableColumn } from './solution/table.vanila'
+import {
+  Table as VanillaTable,
+  type TTableColumn as TVanillaTableColumn,
+} from './solution/table.vanila'
 import { Table as StudentTable } from './table.react'
 import { Table as StudentVanillaTable } from './table.vanila'
 
@@ -57,20 +60,20 @@ const VANILLA_COLUMNS: TVanillaTableColumn<Stock>[] = [
 
 const defaultComparator =
   (columnId: keyof Stock, direction: 'asc' | 'desc') =>
-    (a: Stock, b: Stock): number => {
-      const modifier = direction === 'asc' ? 1 : -1
-      if (typeof a[columnId] === 'string' && typeof b[columnId] === 'string') {
-        return a[columnId].localeCompare(b[columnId]) * modifier
-      }
-      if (typeof a[columnId] === 'number' && typeof b[columnId] === 'number') {
-        return (a[columnId] - b[columnId]) * modifier
-      }
-      return 0
+  (a: Stock, b: Stock): number => {
+    const modifier = direction === 'asc' ? 1 : -1
+    if (typeof a[columnId] === 'string' && typeof b[columnId] === 'string') {
+      return a[columnId].localeCompare(b[columnId]) * modifier
     }
+    if (typeof a[columnId] === 'number' && typeof b[columnId] === 'number') {
+      return (a[columnId] - b[columnId]) * modifier
+    }
+    return 0
+  }
 
 const dataSource: () => TTableDataSource<Stock> = () => {
-  const pageSize = 5;
-  const pages = Math.ceil(20 / pageSize);
+  const pageSize = 5
+  const pages = Math.ceil(20 / pageSize)
 
   return {
     pages,
@@ -79,25 +82,29 @@ const dataSource: () => TTableDataSource<Stock> = () => {
       if (page >= pages) return []
       const res = await fetchStocks(page, size)
       return res.data
-    }
+    },
   }
 }
 
 export function TableExample() {
-  const datasource = useMemo(() => dataSource(), []);
+  const datasource = useMemo(() => dataSource(), [])
 
   return (
     <Table
       columns={COLUMNS}
       datasource={datasource}
       comparator={defaultComparator}
-      search={(query, list) => list.filter(s => Object.values(s).some(v => String(v).toLowerCase().includes(query.toLowerCase())))}
+      search={(query, list) =>
+        list.filter((s) =>
+          Object.values(s).some((v) => String(v).toLowerCase().includes(query.toLowerCase())),
+        )
+      }
     />
   )
 }
 
 export function TableVanillaExample() {
-  const datasource = useMemo(() => dataSource(), []);
+  const datasource = useMemo(() => dataSource(), [])
   const rootRef = useRef<HTMLDivElement>(null)
   const tableRef = useRef<VanillaTable<Stock> | null>(null)
 
@@ -108,7 +115,10 @@ export function TableVanillaExample() {
       columns: VANILLA_COLUMNS,
       datasource,
       comparator: defaultComparator,
-      search: (query, list) => list.filter(s => Object.values(s).some(v => String(v).toLowerCase().includes(query.toLowerCase())))
+      search: (query, list) =>
+        list.filter((s) =>
+          Object.values(s).some((v) => String(v).toLowerCase().includes(query.toLowerCase())),
+        ),
     })
     tableRef.current.render()
     return () => {
@@ -121,20 +131,24 @@ export function TableVanillaExample() {
 }
 
 export function TableStudentExample() {
-  const datasource = useMemo(() => dataSource(), []);
+  const datasource = useMemo(() => dataSource(), [])
 
   return (
     <StudentTable
       columns={COLUMNS}
       datasource={datasource}
       comparator={defaultComparator}
-      search={(query: string, list: Stock[]) => list.filter(s => Object.values(s).some(v => String(v).toLowerCase().includes(query.toLowerCase())))}
+      search={(query: string, list: Stock[]) =>
+        list.filter((s) =>
+          Object.values(s).some((v) => String(v).toLowerCase().includes(query.toLowerCase())),
+        )
+      }
     />
   )
 }
 
 export function TableStudentVanillaExample() {
-  const datasource = useMemo(() => dataSource(), []);
+  const datasource = useMemo(() => dataSource(), [])
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -146,7 +160,10 @@ export function TableStudentVanillaExample() {
       columns: VANILLA_COLUMNS,
       datasource,
       comparator: defaultComparator,
-      search: (query: string, list: Stock[]) => list.filter(s => Object.values(s).some(v => String(v).toLowerCase().includes(query.toLowerCase())))
+      search: (query: string, list: Stock[]) =>
+        list.filter((s) =>
+          Object.values(s).some((v) => String(v).toLowerCase().includes(query.toLowerCase())),
+        ),
     })
 
     if (table.render) table.render()

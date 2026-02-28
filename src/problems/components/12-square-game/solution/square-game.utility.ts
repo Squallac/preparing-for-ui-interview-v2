@@ -27,7 +27,7 @@ export function getGameState(size: number): Array<Array<number | null>> {
   const arr = randomizeArray(
     Array(size * size)
       .fill(null)
-      .map((_, i) => (i === size * size - 1 ? null : i + 1))
+      .map((_, i) => (i === size * size - 1 ? null : i + 1)),
   )
   return chunkify(arr, size)
 }
@@ -71,5 +71,5 @@ export function getEmptyPosition(arr: Array<Array<number | null>>): TPosition {
  */
 export function isWin(arr: Array<Array<number | null>>): boolean {
   const flat = arr.flat()
-  return flat.every((val, i) => i === flat.length - 1 ? val === null : val === i + 1)
+  return flat.every((val, i) => (i === flat.length - 1 ? val === null : val === i + 1))
 }

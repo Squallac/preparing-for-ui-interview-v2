@@ -1,8 +1,8 @@
-.container {}
+.container {
+}
 
 /* Base star style */
 .star {
-  font-size: 1.5rem;
   cursor: pointer;
   width: 2rem;
   height: 2rem;
@@ -44,6 +44,6 @@
 }
 
 /* 2. Dim subsequent stars when hovering */
-.container .star:hover~.star {
+.container .star:hover ~ .star {
   opacity: 0.2;
 }

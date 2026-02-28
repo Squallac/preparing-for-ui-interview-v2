@@ -27,7 +27,7 @@ export class GameOfThree extends AbstractComponent<TSquareGameProps> {
             const bgClass = col === null ? flex.bgWhite5 : flex.bgBlack10
             return `
                         <div 
-                            class="${cx(css.cell, flex.flexRowCenter, flex.cWhite10, cellClass, bgClass)}"
+                            class="${cx(css.cell, flex.wh200px, flex.flexRowCenter, flex.cWhite10, cellClass, bgClass, flex.fontXL)}"
                             data-row="${rowIndex}" 
                             data-col="${colIndex}"
                         >
@@ -57,8 +57,8 @@ export class GameOfThree extends AbstractComponent<TSquareGameProps> {
 
     const [emptyRow, emptyCol] = getEmptyPosition(this.state)
     if (validate([row, col], [emptyRow, emptyCol])) {
-      const newState = structuredClone(this.state);
-      [newState[row][col], newState[emptyRow][emptyCol]] = [
+      const newState = structuredClone(this.state)
+      ;[newState[row][col], newState[emptyRow][emptyCol]] = [
         newState[emptyRow][emptyCol],
         newState[row][col],
       ]

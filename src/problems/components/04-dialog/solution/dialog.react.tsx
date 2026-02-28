@@ -24,7 +24,11 @@ export function Dialog({ open, onConfirm, onCancel, children }: TDialogProps) {
   }, [open])
 
   return (
-    <dialog ref={dialogRef} className={cx(styles.padding24, styles.bNone, styles.br8, css.container)} onClose={onCancel}>
+    <dialog
+      ref={dialogRef}
+      className={cx(styles.padding24, styles.bNone, styles.br8, css.container)}
+      onClose={onCancel}
+    >
       <section className={styles.paddingVer8}>{children}</section>
       <footer className={cx(styles.flexRowBetween, styles.flexGap8, styles.paddingVer8)}>
         <button autoFocus onClick={onConfirm}>

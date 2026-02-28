@@ -46,7 +46,7 @@ export class StarRating extends AbstractComponent<TStarRatingProps> {
                 <button
                     aria-readonly="${readonly}"
                     data-star-value="${starValue}"
-                    class="${styles.star} ${flex.flexColumnCenter}"
+                    class="${styles.star} ${flex.flexColumnCenter} ${flex.fontXL}"
                     aria-label="${starValue} Star${starValue === 1 ? '' : 's'}"
                     aria-checked="${this.value === starValue}"
                     role="radio"

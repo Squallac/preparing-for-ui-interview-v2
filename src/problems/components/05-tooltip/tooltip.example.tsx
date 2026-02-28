@@ -8,37 +8,64 @@ import cx from '@course/cx'
 export function TooltipExample() {
   const autoBoundaryRef = useRef<HTMLDivElement>(null)
   return (
-    <div
-      className={cx(flex.flexColumnCenter, flex.flexGap24, flex.paddingHor32)}
-    >
+    <div className={cx(flex.flexColumnCenter, flex.flexGap24, flex.paddingHor32)}>
       <h3>Auto-Positioning</h3>
-      <p style={{ color: '#888', margin: 0 }}>Buttons at container edges force auto to pick a different direction</p>
+      <p style={{ color: '#888', margin: 0 }}>
+        Buttons at container edges force auto to pick a different direction
+      </p>
       <div
         ref={autoBoundaryRef}
-        style={{ position: 'relative', width: '100%', height: '300px', border: '1px dashed #555', borderRadius: '8px' }}
+        className={flex.h300px}
+        style={{
+          position: 'relative',
+          width: '100%',
+          border: '1px dashed #555',
+          borderRadius: '8px',
+        }}
       >
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)' }}>
           <Tooltip position="auto" boundary={autoBoundaryRef} content="No room above → goes bottom">
             <button>Top Edge</button>
           </Tooltip>
         </div>
-        <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)' }}>
+        <div
+          style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)' }}
+        >
           <Tooltip position="auto" boundary={autoBoundaryRef} content="No room below → goes top">
             <button>Bottom Edge</button>
           </Tooltip>
         </div>
         <div style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}>
-          <Tooltip position="auto" boundary={autoBoundaryRef} content="No room left → goes top or right">
+          <Tooltip
+            position="auto"
+            boundary={autoBoundaryRef}
+            content="No room left → goes top or right"
+          >
             <button>Left Edge</button>
           </Tooltip>
         </div>
         <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)' }}>
-          <Tooltip position="auto" boundary={autoBoundaryRef} content="No room right → goes top or left">
+          <Tooltip
+            position="auto"
+            boundary={autoBoundaryRef}
+            content="No room right → goes top or left"
+          >
             <button>Right Edge</button>
           </Tooltip>
         </div>
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-          <Tooltip position="auto" boundary={autoBoundaryRef} content="Room everywhere → defaults to top">
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <Tooltip
+            position="auto"
+            boundary={autoBoundaryRef}
+            content="Room everywhere → defaults to top"
+          >
             <button>Center</button>
           </Tooltip>
         </div>
@@ -95,11 +122,31 @@ export function TooltipVanillaExample() {
     // Auto-positioning — create wrapper divs at edges
     const box = autoBoxRef.current
     const autoConfigs: { text: string; btnText: string; style: string }[] = [
-      { text: 'No room above → goes bottom', btnText: 'Top Edge', style: 'position:absolute;top:0;left:50%;transform:translateX(-50%)' },
-      { text: 'No room below → goes top', btnText: 'Bottom Edge', style: 'position:absolute;bottom:0;left:50%;transform:translateX(-50%)' },
-      { text: 'No room left → goes top or right', btnText: 'Left Edge', style: 'position:absolute;left:0;top:50%;transform:translateY(-50%)' },
-      { text: 'No room right → goes top or left', btnText: 'Right Edge', style: 'position:absolute;right:0;top:50%;transform:translateY(-50%)' },
-      { text: 'Room everywhere → defaults to top', btnText: 'Center', style: 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)' },
+      {
+        text: 'No room above → goes bottom',
+        btnText: 'Top Edge',
+        style: 'position:absolute;top:0;left:50%;transform:translateX(-50%)',
+      },
+      {
+        text: 'No room below → goes top',
+        btnText: 'Bottom Edge',
+        style: 'position:absolute;bottom:0;left:50%;transform:translateX(-50%)',
+      },
+      {
+        text: 'No room left → goes top or right',
+        btnText: 'Left Edge',
+        style: 'position:absolute;left:0;top:50%;transform:translateY(-50%)',
+      },
+      {
+        text: 'No room right → goes top or left',
+        btnText: 'Right Edge',
+        style: 'position:absolute;right:0;top:50%;transform:translateY(-50%)',
+      },
+      {
+        text: 'Room everywhere → defaults to top',
+        btnText: 'Center',
+        style: 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)',
+      },
     ]
 
     const autoTooltips = autoConfigs.map(({ text, btnText, style }) => {
@@ -116,14 +163,20 @@ export function TooltipVanillaExample() {
   }, [])
 
   return (
-    <div
-      className={cx(flex.flexColumnCenter, flex.flexGap24, flex.paddingHor32)}
-    >
+    <div className={cx(flex.flexColumnCenter, flex.flexGap24, flex.paddingHor32)}>
       <h3>Auto-Positioning</h3>
-      <p style={{ color: '#888', margin: 0 }}>Buttons at container edges force auto to pick a different direction</p>
+      <p style={{ color: '#888', margin: 0 }}>
+        Buttons at container edges force auto to pick a different direction
+      </p>
       <div
         ref={autoBoxRef}
-        style={{ position: 'relative', width: '100%', height: '300px', border: '1px dashed #555', borderRadius: '8px' }}
+        className={flex.h300px}
+        style={{
+          position: 'relative',
+          width: '100%',
+          border: '1px dashed #555',
+          borderRadius: '8px',
+        }}
       />
 
       <h3 style={{ marginTop: '2rem' }}>Fixed Positions</h3>

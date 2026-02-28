@@ -13,7 +13,7 @@ implementations.forEach(({ name, fn }) => {
   describe(`${name} Solution`, () => {
     describe('throttle', () => {
       it('should return a function', () => {
-        const throttled = throttle(() => { }, 100)
+        const throttled = throttle(() => {}, 100)
         expect(typeof throttled).toBe('function')
       })
 

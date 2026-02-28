@@ -4,18 +4,18 @@
 
 ## Goal
 
-Implement a robust Typeahead (Autocomplete) component that efficiently filters a large dataset and handles asynchronous API interactions. The component should support both client-side filtering (using a Trie) and server-side fetching.
+Implement a robust Typeahead (Autocomplete) component that efficiently handles asynchronous API interactions. The component should handle fetching, displaying loading states, and allowing the user to select suggestions via mouse or keyboard.
 
 ## Requirements
 
 ### Core Functionality
 
-1.  **Efficient Filtering**: Implement a **Trie (Prefix Tree)** data structure to perform efficient client-side prefix searches.
-2.  **Async Data Fetching**: Fetch suggestions from a backend API (`/api/typeahead`) as the user types.
-3.  **Debouncing**: Debounce user input to avoid spamming the API with requests for every keystroke.
-4.  **Race Condition Handling**: Ensure that results from older, slower network requests do not overwrite results from newer, faster requests (ignore stale promises).
-5.  **Loading State**: Display a loading indicator while fetching data.
-6.  **Results Limit**: Limit the number of displayed suggestions (e.g., top 10).
+1.  **Async Data Fetching**: Fetch suggestions from a backend API (`/api/typeahead`) as the user types.
+2.  **Responsiveness**: Avoid spamming the API and ensure the UI remains responsive (e.g., using debouncing or `useDeferredValue`).
+3.  **Race Condition Handling**: Ensure that results from older, slower network requests do not overwrite results from newer, faster requests (e.g., using `AbortController`).
+4.  **Loading State**: Display a loading indicator while fetching data.
+5.  **Keyboard Navigation**: Allow users to navigate results with Arrow Up/Down and select with Enter/Space. Support Escape to close the list.
+6.  **Click Outside**: Close the suggestions list when clicking outside the component.
 
 ### API Integration
 
@@ -34,15 +34,11 @@ Implement a robust Typeahead (Autocomplete) component that efficiently filters a
 
 ## Solution Approach
 
-### 1. Trie Data Structure
+### 1. React Implementation
 
-Use a Trie (Prefix Tree) for $O(L)$ insertion and search complexity, where $L$ is the key length. This is significantly faster than filtering an array ($O(N \cdot L)$) for large datasets.
-
-### 2. React Implementation
-
-- **Hooks**: `useState`, `useEffect`, `useRef`.
-- **Concurrency**: Use `useDeferredValue` for input responsiveness.
-- **Race Conditions**: Use a boolean flag (`ignore`) in the `useEffect` cleanup function to discard stale API responses.
+- **Hooks**: `useState`, `useEffect`, `useRef`, `useDeferredValue`.
+- **Keyboard & Blur**: Attach event listeners for `keydown` and manage focus/click outside.
+- **Race Conditions**: Use `AbortController` in the `useEffect` cleanup function to cancel stale API requests.
 
 ### 3. Vanilla Implementation
 
@@ -53,6 +49,8 @@ Use a Trie (Prefix Tree) for $O(L)$ insertion and search complexity, where $L$ i
 ## Verification
 
 1.  **Typing**: Type "ap" -> expect "apple", "apricot", etc.
-2.  **Debounce**: Rapidly type "apple" -> expect only one final network request.
+2.  **Network**: Rapidly type "apple" -> expect previous network requests to be canceled or ignored.
 3.  **Race Condition**: Type "a" (slow response) then "ab" (fast response) -> ensure results for "ab" are shown, not "a".
-4.  **Accessiblity**: Use a screen reader (or inspect DOM) to verify `aria-live` announces result counts.
+4.  **Keyboard**: Type to get results, use Arrow Down to select, hit Enter -> input should be populated.
+5.  **Click Outside**: Open suggestions, click elsewhere -> list should close.
+6.  **Accessiblity**: Use a screen reader (or inspect DOM) to verify `aria-live` announces result counts.

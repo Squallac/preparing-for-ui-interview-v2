@@ -1,5 +1,5 @@
 export class Tabs {
-    constructor(config: any) { }
-    render() { }
-    destroy() { }
+  constructor(config: any) {}
+  render() {}
+  destroy() {}
 }

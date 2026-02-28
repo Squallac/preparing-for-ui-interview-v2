@@ -94,7 +94,10 @@ export function ToastStudentVanillaExample() {
     if (!toastContainerRef.current) return
     toastRef.current = new StudentVanillaToast({ root: toastContainerRef.current })
     if (toastRef.current.render) toastRef.current.render()
-    return () => { toastRef.current?.destroy?.(); toastRef.current = null }
+    return () => {
+      toastRef.current?.destroy?.()
+      toastRef.current = null
+    }
   }, [])
 
   return (
