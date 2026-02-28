@@ -99,3 +99,9 @@ const promise = new MyPromise((resolve, reject) => {
 
 promise.then((value) => value + ' World').then((value) => console.log(value)) // "Hello World"
 ```
+
+## Run Tests
+
+```bash
+bun test src/problems/vanila/08-promise/test/promise.test.ts
+```
