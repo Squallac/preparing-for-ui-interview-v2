@@ -4,10 +4,11 @@
     "paths": {
       "@course/styles": ["src/utilities/styles.module.css"],
       "@course/cx": ["src/utilities/utility.ts"],
-      "@course/types": ["src/utilities/types.ts"]
+      "@course/types": ["src/utilities/types.ts"],
+      "@course/utils": ["src/utilities/utils.ts"]
     },
     "target": "ESNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": ["bun-types"],

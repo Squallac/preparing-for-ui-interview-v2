@@ -65,6 +65,10 @@ cloned.self === cloned // true
 - Self-referencing objects
 - Cross-circular references (A → B → A)
 
+## Provided Utilities
+
+The `detectType` function from `@course/utils` is pre-imported in your student file. It returns the type of any value as a lowercase string (e.g., `"object"`, `"array"`, `"map"`, `"set"`, `"date"`).
+
 ## Hints
 
 1. Use a `Map` cache to track cloned objects for circular reference handling

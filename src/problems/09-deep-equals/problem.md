@@ -68,9 +68,13 @@ deepEquals(a, b) // true (should not stack overflow)
 
 Your implementation should return `true` for all valid structural comparisons including this edge case.
 
+## Provided Utilities
+
+The `detectType` function from `@course/utils` is pre-imported in your student file. It returns the type of any value as a lowercase string (e.g., `"object"`, `"array"`, `"null"`).
+
 ## Hints
 
-1. Use `Object.getPrototypeOf()` to get the type of a value
+1. Use `detectType()` to compare the types of `a` and `b`
 2. Use a `Map` to track visited object pairs for circular reference detection
 3. Store the pair `(a, b)` before recursing, not after
 4. Check `store.has(a)` before comparing `store.get(a) === b` to avoid false positives with `undefined`

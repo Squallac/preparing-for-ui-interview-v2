@@ -13,7 +13,7 @@ const addIntoTarget = (target: TCollection, value: any, key?: string | number) =
   } else if (target instanceof Set) {
     target.add(value)
   } else {
-    (target as Record<string | number, any>)[key as string] = value
+    ;(target as Record<string | number, any>)[key as string] = value
   }
 }
 

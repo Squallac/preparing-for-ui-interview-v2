@@ -46,9 +46,13 @@ obj.self = obj
 stringify(obj) // "{ a: 1, self: [Circular] }"
 ```
 
+## Provided Utilities
+
+The `detectType` function from `@course/utils` is pre-imported in your student file. It returns the type of any value as a lowercase string (e.g., `"string"`, `"array"`, `"map"`, `"date"`, `"regexp"`).
+
 ## Hints
 
-1. Use type detection to determine how to format each value
+1. Use `detectType()` with a `switch` statement to handle each type
 2. Use a `WeakSet` to track seen objects for circular reference detection
 3. Check if value is in `seen` before recursing, add to `seen` before processing
 4. Pass `seen` to all recursive calls
