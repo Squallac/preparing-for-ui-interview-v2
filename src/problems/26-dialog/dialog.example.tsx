@@ -7,8 +7,8 @@ import { Dialog as VanillaDialogStudent } from './dialog.vanila'
 export function DialogExample() {
   const [open, setOpen] = useState(false)
 
-  const handleConfirm = () => setOpen(false)
-  const handleCancel = () => setOpen(false)
+  const handleConfirm = () => { alert('Confirmed'); setOpen(false) }
+  const handleCancel = () => { alert('Cancelled'); setOpen(false) }
 
   return (
     <div>
@@ -33,8 +33,8 @@ export function DialogVanillaExample() {
         <h2>Confirm Action</h2>
         <p>Are you sure you want to proceed?</p>
       `,
-      onConfirm: () => console.log('Confirmed'),
-      onCancel: () => console.log('Cancelled'),
+      onConfirm: () => alert('Confirmed'),
+      onCancel: () => alert('Cancelled'),
     })
     dialogRef.current.render()
     return () => {
@@ -60,7 +60,7 @@ export const DialogStudentExample = () => {
   return (
     <div>
       <button onClick={() => setOpen(true)}>Open Dialog</button>
-      <DialogStudent open={open} onConfirm={() => setOpen(false)} onCancel={() => setOpen(false)}>
+      <DialogStudent open={open} onConfirm={() => { alert('Confirmed'); setOpen(false) }} onCancel={() => { alert('Cancelled'); setOpen(false) }}>
         <h2>Confirm Action</h2>
         <p>Are you sure you want to proceed?</p>
       </DialogStudent>
@@ -80,8 +80,8 @@ export function DialogStudentVanillaExample() {
         <h2>Confirm Action</h2>
         <p>Are you sure you want to proceed?</p>
       `,
-      onConfirm: () => console.log('Confirmed'),
-      onCancel: () => console.log('Cancelled'),
+      onConfirm: () => alert('Confirmed'),
+      onCancel: () => alert('Cancelled'),
     })
     dialogRef.current.render()
     return () => {
