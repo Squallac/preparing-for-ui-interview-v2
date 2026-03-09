@@ -20,12 +20,7 @@
 
 /* Disabled/Readonly state (provided) */
 .star:disabled,
-.star[aria-readonly='true'] {
-  cursor: default;
-  pointer-events: none;
-}
+.star[aria-readonly='true'] {}
 
 /* Dimmed state for inactive stars (provided) */
-.star[data-active='false'] {
-  opacity: 0.2;
-}
+.star[data-active='false'] {}
