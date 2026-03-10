@@ -14,9 +14,7 @@ import type { Equal, Expect } from '@course/types'
 
 /* _____________ Your Code Here _____________ */
 
-type Diff<T1 extends {}, T2 extends {}> = {
-  [Key in keyof (T1 & T2) as Key extends keyof (T1 | T2) ? never : Key]: (T1 & T2)[Key]
-}
+type Diff<T1 extends {}, T2 extends {}> = {}
 
 /* _____________ Test Cases _____________ */
 

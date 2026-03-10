@@ -14,7 +14,7 @@ import type { Equal, Expect } from '@course/types'
 
 /* _____________ Your Code Here _____________ */
 
-type IsNever<T> = [T] extends [never] ? true : false;
+type IsNever<T> = {}
 
 /* _____________ Test Cases _____________ */
 
