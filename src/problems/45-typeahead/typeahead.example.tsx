@@ -50,5 +50,13 @@ export const TypeaheadVanillaExample = () => {
   return <div ref={rootRef} style={{ padding: 20, maxWidth: 400 }} />
 }
 export const TypeaheadStudentExample = () => {
-  return <TypeaheadStudent />
+  return (
+    <div style={{ padding: 20, maxWidth: 400 }}>
+      <TypeaheadStudent<string>
+        entries={[]}
+        onQuery={handleQuery}
+        itemRender={(item) => <span>{item.value}</span>}
+      />
+    </div>
+  )
 }

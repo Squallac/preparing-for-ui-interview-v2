@@ -1,5 +1,4 @@
 import { useToast, ToastProvider } from './solution/toast.react'
-import { Toast as ToastStudent } from './toast.react'
 import { Toast } from './solution/toast.vanila'
 import { Toast as StudentVanillaToast } from './toast.vanila'
 import { useEffect, useRef, type CSSProperties } from 'react'
@@ -83,7 +82,7 @@ export function ToastVanillaExample() {
   )
 }
 export const ToastStudentExample = () => {
-  return <ToastStudent />
+  return <></>;
 }
 
 export function ToastStudentVanillaExample() {

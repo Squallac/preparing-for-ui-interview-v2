@@ -65,6 +65,7 @@ export class Tooltip extends AbstractComponent<TTooltipProps> {
    * - Return a <div> with role="tooltip", unique id, display:none
    * - Apply css.tooltip class and position class from positions map
    * - Content comes from this.config.content
+   * a11y: role="tooltip" on the tooltip element
    */
   toHTML(): string {
     return ``;
@@ -74,6 +75,7 @@ export class Tooltip extends AbstractComponent<TTooltipProps> {
    * Step 3: Implement afterRender
    * - Append this.config.children (the trigger element) to this.container
    * - Query and store the tooltip element by its id
+   * a11y: set aria-describedby on the trigger element pointing to the tooltip id
    */
   afterRender(): void {
   }
@@ -83,6 +85,7 @@ export class Tooltip extends AbstractComponent<TTooltipProps> {
    * - onMouseenter / onFocusin: show the tooltip (call showTooltip)
    * - onMouseleave / onFocusout: hide the tooltip (set display to 'none')
    * - onKeydown: hide on Escape key
+   * a11y: focusin/focusout ensure keyboard users can trigger tooltip; Escape dismisses it
    */
   onMouseenter() {
   }

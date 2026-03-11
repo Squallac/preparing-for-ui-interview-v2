@@ -70,5 +70,19 @@ export const MarkdownExample = () => {
   )
 }
 export const MarkdownStudentExample = () => {
-  return <MarkdownStudent />
+  return (
+    <div style={{ padding: '20px', maxWidth: '800px' }}>
+      <h3 style={{ marginBottom: '16px', color: '#666' }}>Student Markdown Preview:</h3>
+      <div
+        style={{
+          border: '1px solid #ddd',
+          borderRadius: '8px',
+          padding: '20px',
+          backgroundColor: '#fafafa',
+        }}
+      >
+        <MarkdownStudent text={EXAMPLE_MARKDOWN} />
+      </div>
+    </div>
+  )
 }

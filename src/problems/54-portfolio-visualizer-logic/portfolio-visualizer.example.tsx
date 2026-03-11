@@ -90,7 +90,7 @@ export function PortfolioVisualizerVanillaExample() {
   return <div ref={rootRef}></div>
 }
 export const PortfolioVisualizerStudentExample = () => {
-  return <PortfolioVisualizerStudent />
+  return <PortfolioVisualizerStudent data={SAMPLE_DATA} />
 }
 
 export function PortfolioVisualizerStudentVanillaExample() {

@@ -1,6 +1,6 @@
 import { CheckboxTree, type TCheckboxItem } from './solution/checkboxes.react'
-import { Checkboxes as CheckboxesStudent } from './checkboxes.react'
-import { Checkboxes as CheckboxesVanilaStudent } from './checkboxes.vanila'
+import { CheckboxTree as CheckboxesStudent } from './checkboxes.react'
+import { CheckboxTree as CheckboxesVanilaStudent } from './checkboxes.vanila'
 import { CheckboxTree as CheckboxTreeVanilla } from './solution/checkboxes.vanila'
 import { useEffect, useRef } from 'react'
 
@@ -59,8 +59,27 @@ export const CheckboxTreeVanillaExample = () => {
   return <div ref={rootRef}></div>
 }
 export const CheckboxesStudentExample = () => {
-  return <CheckboxesStudent />
+  return <CheckboxesStudent items={MOCK_DATA} />
 }
 export const CheckboxesStudentVanillaExample = () => {
-  return <div>Student Vanilla: TODO implement wrapper</div>
+  const rootRef = useRef<HTMLDivElement>(null)
+  const treeRef = useRef<CheckboxesVanilaStudent | null>(null)
+
+  useEffect(() => {
+    if (!rootRef.current) return
+
+    treeRef.current = new CheckboxesVanilaStudent({
+      root: rootRef.current,
+      items: structuredClone(MOCK_DATA) as any,
+    })
+
+    treeRef.current.render()
+
+    return () => {
+      treeRef.current?.destroy()
+      treeRef.current = null
+    }
+  }, [])
+
+  return <div ref={rootRef}></div>
 }

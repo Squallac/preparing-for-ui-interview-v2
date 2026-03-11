@@ -1,11 +1,40 @@
 import { AbstractComponent, type TComponentConfig } from '@course/utils'
-
-export class Toast extends AbstractComponent<any> {
-  constructor(config: TComponentConfig<any>) {
-    super(config)
+import css from './toast.module.css'
+import flex from '@course/styles'
+import cx from '@course/cx'
+type TToastItem = {
+  id: string
+  text: string
+}
+/**
+ * Expected usage:
+ *   const toast = new Toast({ root: containerElement })
+ *   toast.render()
+ *   toast.toast({ id: '1', text: 'Hello' })
+ *
+ * Toast item: { id: '1', text: 'Vanilla Toast: 1' }
+ */
+let toastInstanceID = 0
+export class Toast extends AbstractComponent<object> {
+  id = toastInstanceID++
+  listElement: HTMLUListElement | null = null
+  container: HTMLElement | null = null;
+  // Step 1: Constructor — pass listeners: ['animationend'], store a unique instance id
+  // Step 2: toast(item) — create a DOM element from getToastTemplate(item),
+  //   append it to this.listElement,
+  //   setTimeout(3000) to swap fadeIn→fadeOut class and set data-removed='true'
+  // Step 3: onAnimationend(event) — if target.dataset.removed === 'true', remove the element from DOM
+  // Step 4: toHTML() — return a <ul> with unique id, aria-live="polite", toast-list class
+  // Step 5: getToastTemplate(item) — return <li> with role="status", data-removed="false",
+  //   data-id, fadeIn class, containing <div class="toast"><p>{text}</p></div>
+  // Step 6: afterRender() — store reference to the <ul> element via document.getElementById
+  constructor(config: TComponentConfig<object>) {
+    super({
+      ...config,
+      listeners: ['animationend']
+    })
   }
   toHTML() {
-    return '<div>TODO: Implement Toast</div>'
+    return `<ul aria-live="polite" aria-relevant="additions removals" id="toast-instance-${this.id}"></ul>`
   }
-  toast(item: any) {}
 }

@@ -40,11 +40,11 @@ export type TGalleryProps = {
  *
  * Step 5: Implement toHTML
  * - Handle empty state: return "No images to display" message
- * - Prev button with styles.buttonPrev, disabled if currentIndex === 0
+ * - Prev button with styles.buttonPrev, disabled if currentIndex === 0, aria-label="Previous image"
  * - <ul> with styles.list and inline transform style
  * - Each <li> with styles.item containing an <img> (lazy src logic)
- * - Next button with styles.buttonNext, disabled if last image
- * - Indicators div with dot buttons (styles.dot, styles.dotActive for current)
+ * - Next button with styles.buttonNext, disabled if last image, aria-label="Next image"
+ * - Indicators div with dot buttons (styles.dot, styles.dotActive for current), each with aria-label="Go to image {index + 1}"
  */
 export class Gallery extends AbstractComponent<TGalleryProps> {
   constructor(config: TComponentConfig<TGalleryProps>) {

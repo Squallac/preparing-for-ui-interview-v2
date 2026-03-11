@@ -1,5 +1,5 @@
 import { GPTComponent } from './solution/gpt-chat.react'
-import { GptChat as GptChatStudent } from './gpt-chat.react'
+import { GPTComponent as GptChatStudent } from './gpt-chat.react'
 import { GptChat as GptChatVanilaStudent } from './gpt-chat.vanila'
 import { GPTChat } from './solution/gpt-chat.vanila'
 import { useEffect, useRef } from 'react'
@@ -27,5 +27,16 @@ export const GptChatStudentExample = () => {
   return <GptChatStudent />
 }
 export const GptChatStudentVanillaExample = () => {
-  return <div>Student Vanilla: TODO implement wrapper</div>
+  const rootRef = useRef<HTMLDivElement>(null)
+  const instanceRef = useRef<GptChatVanilaStudent | null>(null)
+  useEffect(() => {
+    if (!rootRef.current) return
+    instanceRef.current = new GptChatVanilaStudent({ root: rootRef.current })
+    instanceRef.current.render()
+    return () => {
+      instanceRef.current?.destroy()
+      instanceRef.current = null
+    }
+  }, [])
+  return <div ref={rootRef} />
 }

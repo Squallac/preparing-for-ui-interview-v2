@@ -25,12 +25,12 @@ export const Gallery = ({ images }: TGalleryProps) => {
 
   // Step 5: Render the gallery
   // - <section> container with positioning classes
-  // - Prev button (disabled when currentIndex === 0), positioned absolute left
+  // - Prev button (disabled when currentIndex === 0), positioned absolute left, aria-label="Previous image"
   // - <ul> with transform: translateX(-currentIndex * 100%) for sliding
   // - Each <li> contains an <img>; use lazy loading: src={currentIndex + 2 >= index ? image : undefined}
-  // - Next button (disabled when currentIndex === images.length - 1), positioned absolute right
+  // - Next button (disabled when currentIndex === images.length - 1), positioned absolute right, aria-label="Next image"
   // - Dot indicators: one <button> per image, active dot gets css.dotActive class
-  //   - onClick sets currentIndex to that dot's index
+  //   - onClick sets currentIndex to that dot's index, aria-label="Go to image {index + 1}"
 
   return (
     <section className={cx(flex.pRel, css.gallery)}>

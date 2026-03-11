@@ -1,1 +1,22 @@
 /* Student solution styles */
+.toast {
+    border-radius: 1rem;
+    padding: 1rem;
+    height: fit-content;
+    max-width: 360px;
+    min-height: 48px;
+    box-shadow: 0px 0 2px 1px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #2000e745, #b5113f82);
+}
+.toast-list {
+    row-gap: 0.5rem;
+    width: 360px;
+}
+
+.fadeIn {
+    animation: toastFadeIn 550ms ease-in forwards;
+}
+
+.fadeOut {
+    animation: toastFadeOut 550ms ease-in forwards;
+}
