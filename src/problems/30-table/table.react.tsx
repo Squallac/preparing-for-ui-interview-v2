@@ -15,7 +15,6 @@ export type TTableColumn<T> = {
   id: string
   name: string
   renderer: (item: T) => React.ReactNode
-  sort?: TSortDir
 }
 
 type TTableProps<T extends { id: string }> = {

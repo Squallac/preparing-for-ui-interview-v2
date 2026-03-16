@@ -13,7 +13,6 @@ export type TTableColumn<T> = {
   id: string
   name: string
   renderer: (item: T) => string
-  sort?: 'asc' | 'desc' | 'none'
 }
 
 export type TTableProps<T> = {
